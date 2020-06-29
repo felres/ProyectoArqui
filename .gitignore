@@ -36,4 +36,9 @@
 *.out
 *.app
 
+# Nombres de ejecutables
+test
+prueba
+jaja
+
 # End of https://www.toptal.com/developers/gitignore/api/c++
