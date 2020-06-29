@@ -8,8 +8,7 @@ class CacheDatos{
         int id;
     }Bloque;
     private:
-      Bloque Datos[4]
-      MemPrincipal * MP;
+      Bloque Datos[4] MemPrincipal * MP;
       int getBloque(int);
       int getPalabra(int);
       int getIndiceCache(int);
