@@ -1,8 +1,6 @@
 #include "CacheInstrucciones.h"
 
-struct instruction{
-    int byte[4];
-}ints_t;
+
 
 
 CacheInstrucciones::CacheInstrucciones(MemoriaPrincipal *mp){
