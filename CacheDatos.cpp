@@ -34,13 +34,16 @@ int CacheDatos::getIndiceCache(int mp_bloque){\
 int CacheDatos::CambiarBloque(int direccion){
     int victima = LRU();
     int mp_bloque = getBloque(direccion);
-    if(Datos[victima].estado != 'M'){
-        Datos[victima].id = getBloque(direccion);
-        Datos[victima].estado = 'C';
-        Datos[victima].palabra1 = MP->getData(mp_bloque*8);
-        Datos[victima].palabra1 = MP->getData(mp_bloque*8 + 4);
-        Datos[victima].usado = TRUE;
+    if(Datos[victima].estado == 'M'){
+    //Se encuentra modificado
+        MP->storeDato((Datos[victima].id)*8,Datos[victima].palabra1);
+        MP->storeDato(((Datos[victima].id)*8) + 4,Datos[victima].palabra2);
     }
+    Datos[victima].id = getBloque(direccion);
+    Datos[victima].estado = 'C';
+    Datos[victima].palabra1 = MP->getData(mp_bloque*8);
+    Datos[victima].palabra1 = MP->getData(mp_bloque*8 + 4);
+    Datos[victima].usado = TRUE;
     return ind
 }
 
