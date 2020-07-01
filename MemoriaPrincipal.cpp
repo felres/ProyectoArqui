@@ -15,22 +15,43 @@ MemoriaPrincipal::~MemoriaPrincipal(){}
 /**
  * dirBloque: Direccion del numero de bloque que debe enviar al cache
  */
-int[] getData(int dirBloque)
+int getData(int dir)
 {
-	int dirDeMeoria = dirBloque * 8;
-	int bloque[8];
-	for(int i = 0; i < 8; i++)
+	if(dir > 383)
 	{
-		bloque[i] = memoriaPrincipal[dirDeMemoria + i];
+		printf("ERROR 1");
+		return -1;
 	}
-	return bloque;
+	return memoriaDatos[dir/4];
 }
 
-int[] getInst(int dirBloque)
+int storeDato(int dir, int dato)
 {
+	if(dir > 383)
+	{
+		printf("ERROR 3");
+		return -1;
+	}
+	memoriaDatos[dir/4] = dato;
+	return dato;
 }
 
-bool storeDato(int dirBloque, int[] dato)
+/**
+ * Ocupa corrimiento
+ * Empieza en la 384 y llega hasta 1020.
+ */
+inst_t getInst(int dir)
 {
-	bool exitoso = true;
+	if(dir < 383)
+	{
+		printf("ERROR 2");
+		return -1;
+	}
+	inst_t ins;
+	for(int i = 0; i < 4; i++)
+	{
+		ins.byte[i] = memoriaInstrucciones[dir-384 + i];
+	}
+	return ins;
 }
+

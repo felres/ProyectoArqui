@@ -9,8 +9,13 @@ class MemoriaPrincipal{
         int id;
     }Bloque;
     
+    struct inst_t{
+    int byte[4];
+	};
+    
     private:
-      int memoriaPrincipal[1024]
+      int memoriaDatos[96]; //48 * 2
+      int memoriaInstrucciones[640]; //80 * 8
     
     public:
       MemoriaPrincipal(int numeroDeHilos);
