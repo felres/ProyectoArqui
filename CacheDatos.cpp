@@ -1,23 +1,33 @@
 #include "CacheDatos.h"
 
 int CacheDatos::getBloque(int direccion){
-    int bloque = -1;
-
-    return bloque;
+    return (int)(direccion/8);
 }
 int CacheDatos::getPalabra(int direccion){
-    int palabra = 0;
-
-    return palabra;
+    int ret = 0;
+    if(0 != direccion % 8){
+        ret = 1;
+    }
+    return ret;
 }
-int CacheDatos::getIndiceCache(int direccion){
+int CacheDatos::getIndiceCache(int mp_bloque){\
     int ind = -1;
-
+    for(int i = 0; i < 4 && ind == -1; ++i){
+        if(mp_bloque == Datos[i].id){
+            ind = i;
+        }
+    }
     return ind
 }
 int CacheDatos::CambiarBloque(int direccion){
-    int ind = -1;
-
+    int victima = LRU();
+    int mp_bloque = getBloque(direccion);
+    if(Datos[victima].estado != 'M'){
+        Datos[victima].id = getBloque(direccion);
+        Datos[victima].estado = 'C';
+        Datos[victima].palabra1 = MP->getData(mp_bloque*8)
+        Datos[victima].palabra1 = MP->getData(mp_bloque*8 + 4)
+    }
     return ind
 }
 
