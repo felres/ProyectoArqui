@@ -6,8 +6,10 @@ class CacheDatos{
         int palabra2;
         char estado;
         int id;
+        bool usado;
     }Bloque;
     private:
+      int indiceLRU;
       Bloque Datos[4] MemPrincipal * MP;
       int getBloque(int);
       int getPalabra(int);

@@ -1,5 +1,17 @@
 #include "CacheDatos.h"
 
+int LRU(){
+    int victima = -1;
+    while(victima == -1){
+        if(Datos[indiceLRU].usado == FALSE){
+            victima = indiceLRU;
+        }else{
+            Datos[indiceLRU].usado = FALSE;
+        }
+        ++indiceLRU;
+    }
+}
+
 int CacheDatos::getBloque(int direccion){
     return (int)(direccion/8);
 }
@@ -39,6 +51,7 @@ CacheDatos::CacheDatos(MemPrincipal * MP){
         Datos[i].estado = i;
         Datos[i].id = -1;
     }
+    indiceLRU = 0;
 }
 CacheDatos::~CacheDatos(){}
 int CacheDatos::lw(int direccion,int & reloj){
@@ -51,6 +64,7 @@ int CacheDatos::lw(int direccion,int & reloj){
     //optiene el indice del bloque dentro de la cache, si no esta se retorna -1
     if(indice_Cache != -1){
     //El bloque se encuentra en memoria
+        Datos[indice_Cache].usado = TRUE;
         if(palabra = 1){
             ret = Datos[indice_Cache].palabra1;
         }else{
