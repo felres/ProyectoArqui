@@ -10,7 +10,7 @@ class MemoriaPrincipal{
     }Bloque;
     
     private:
-      Bloque MemoraPrincipal[1024]
+      int memoriaPrincipal[1024]
     
     public:
       MemoriaPrincipal(int numeroDeHilos);
