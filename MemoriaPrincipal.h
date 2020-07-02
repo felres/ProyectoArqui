@@ -1,10 +1,9 @@
 #ifndef MEMORIA_PRINCIPAL
 #define MEMORIA_PRINCIPAL
+#include <iostream>
+#include <fstream>
+#include <string>
 class MemoriaPrincipal{
-	
-	#include <iostream>
-	#include <fstream>
-	#include <string>
     
     struct inst_t{
     int byte[4];
@@ -20,7 +19,7 @@ class MemoriaPrincipal{
       MemoriaPrincipal();
       ~MemoriaPrincipal();
       int getData(int dir);
-      inst_t getInst(int dir);
+      //inst_t getInst(int dir);
       int storeDato(int dir, int dato);
       int load_hilo(int n);
       int printData();

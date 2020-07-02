@@ -1,10 +1,23 @@
+#include <cstddef>
+#include <cstring>
+#include <fstream>
+#include <iostream>
+#include <stdio.h>
+#include <string>
+
+
 #include "MemoriaPrincipal.h"
+
+struct inst_t{
+int byte[4];
+};
+	
 MemoriaPrincipal::MemoriaPrincipal()
 {
 	// Llena  toda la memoria de '1' por default
 	for(int i = 0; i < sizeof(memoriaDatos); i++)
 	{
-		memoriaPrincipal[i] = 1;
+		memoriaDatos[i] = 1;
 	}
 }
 
@@ -13,11 +26,11 @@ MemoriaPrincipal::~MemoriaPrincipal(){}
 /**
  * dirBloque: Direccion del numero de bloque que debe enviar al cache
  */
-int getData(int dir)
+int MemoriaPrincipal::getData(int dir)
 {
 	if(dir > 383)
 	{
-		printf("ERROR 1");
+		std::cerr << "ERROR 1" << std::endl;
 		return -1;
 	}
 	return memoriaDatos[dir/4];
@@ -27,7 +40,7 @@ int MemoriaPrincipal::storeDato(int dir, int dato)
 {
 	if(dir > 383)
 	{
-		printf("ERROR 3");
+		std::cerr << "ERROR 3" << std::endl;
 		return -1;
 	}
 	memoriaDatos[dir/4] = dato;
@@ -38,11 +51,12 @@ int MemoriaPrincipal::storeDato(int dir, int dato)
  * Ocupa corrimiento
  * Empieza en la 384 y llega hasta 1020.
  */
+ /*
 inst_t MemoriaPrincipal::getInst(int dir)
 {
 	if(dir < 383)
 	{
-		printf("ERROR 2");
+		std::cerr << "ERROR 2" << std::endl;
 		return -1;
 	}
 	inst_t ins;
@@ -51,29 +65,29 @@ inst_t MemoriaPrincipal::getInst(int dir)
 		ins.byte[i] = memoriaInstrucciones[dir-384 + i];
 	}
 	return ins;
-}
+}*/
 
 int MemoriaPrincipal::printData()
 {
-	std::string sep = '\t';
+	std::string sep = "\t";
 	std::string str;
 	str = "mem:" + sep + "+0" + sep + "+1" + sep + "+2" + sep + "+3" + sep + '\n';
 	for(int i = 0; i < sizeof(memoriaDatos); i+=4)
 	{
-		str += "[" + i + "]" + sep
-			+ memoriaDatos[i] + sep
-			+ memoriaDatos[i+1] + sep
-			+ memoriaDatos[i+2] + sep
-			+ memoriaDatos[i+3] + '\n';
+		str += "[" + std::to_string(i) + "]" + sep
+			+ std::to_string(memoriaDatos[i]) + sep
+			+ std::to_string(memoriaDatos[i+1]) + sep
+			+ std::to_string(memoriaDatos[i+2]) + sep
+			+ std::to_string(memoriaDatos[i+3]) + '\n';
 	}
-	printf(str);
+	std::cout << str << std::endl;
 	return 0;
 }
 
 int MemoriaPrincipal::load_hilo(int n)
 {
 	// Construir el string
-	std::string nombreDelArchivo = nombreDelFolderContenedor + "/" + itoa(n) + ".txt";
+	std::string nombreDelArchivo = nombreDelFolderContenedor + "/" + std::to_string(n) + ".txt";
 	std::fstream newfile;
 	// Abrir archivo para leer
 	newfile.open(nombreDelArchivo,std::ios::in);
@@ -83,15 +97,19 @@ int MemoriaPrincipal::load_hilo(int n)
 		// Leer dato. Instertar hilo en string
 		while(getline(newfile, tp))
 		{
-			/// aca ocupo hacer tokenization de los numeros y ponerlos en la matriz
+			// aca ocupo hacer tokenization de los numeros y ponerlos en la matriz
 			// tp contiene la linea que queremos tokenizar
 			char *token;
+			// hacemos un string de c para poder usar strtok.
+			// Le copiamos los contenidos de tp
+			char* cstr = new char[tp.length()+1];
+			std::strcpy(cstr, tp.c_str());
 			// get the first token
-			token = strtok(str, s);
+			token = strtok(cstr, " ");
 			// walk through other tokens
 			while( token != NULL ) {
-			  memoriaDatos[memoriaDatosWritingIndex++] = stoi(token);
-			  token = strtok(NULL, s);
+			  memoriaDatos[memoriaDatosWritingIndex++] = std::stoi(token);
+			  token = strtok(NULL, " ");
 			}
 		}
 		//siempre cerrar
