@@ -5,12 +5,6 @@ class MemoriaPrincipal{
 	#include <iostream>
 	#include <fstream>
 	#include <string>
-    typedef struct Bloque{
-        int palabra1;
-        int palabra2;
-        char estado;
-        int id;
-    }Bloque;
     
     struct inst_t{
     int byte[4];
@@ -23,11 +17,12 @@ class MemoriaPrincipal{
       std::string nombreDelFolderContenedor = "HILILLOS-PRUEBA FINAL-CI0120";
     
     public:
-      MemoriaPrincipal(int numeroDeHilos);
+      MemoriaPrincipal();
       ~MemoriaPrincipal();
-      Bloque getData(int dir);
-      Bloque getInst(int dir);
-      bool storeDato(int dir, Bloque dato);
-      int load_hilo(int hilo);
+      int getData(int dir);
+      inst_t getInst(int dir);
+      int storeDato(int dir, int dato);
+      int load_hilo(int n);
+      int printData();
 };
 #endif

@@ -1,13 +1,11 @@
 #include "MemoriaPrincipal.h"
-MemoriaPrincipal::MemoriaPrincipal(int numeroDeHilos)
+MemoriaPrincipal::MemoriaPrincipal()
 {
 	// Llena  toda la memoria de '1' por default
-	for(int i = 0; i < memoriaPrincipal.length; i++)
+	for(int i = 0; i < sizeof(memoriaDatos); i++)
 	{
 		memoriaPrincipal[i] = 1;
 	}
-	
-	// debe almacenar los hilos de alguna forma, pero deberia ser el que los lee?
 }
 
 MemoriaPrincipal::~MemoriaPrincipal(){}
@@ -60,7 +58,7 @@ int MemoriaPrincipal::printData()
 	std::string sep = '\t';
 	std::string str;
 	str = "mem:" + sep + "+0" + sep + "+1" + sep + "+2" + sep + "+3" + sep + '\n';
-	for(int i = 0; i < memoriaDatos.length; i+=4)
+	for(int i = 0; i < sizeof(memoriaDatos); i+=4)
 	{
 		str += "[" + i + "]" + sep
 			+ memoriaDatos[i] + sep
@@ -99,5 +97,6 @@ int MemoriaPrincipal::load_hilo(int n)
 		//siempre cerrar
 		newfile.close();
 	}
+	return 0;
 }
 
