@@ -3,6 +3,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+
+#define MEMORIADATOS_LENGTH 96
+#define MEMORIAINSTRUCCIONES_LENGTH 640
+
 class MemoriaPrincipal{
     
     struct inst_t{
@@ -10,9 +14,9 @@ class MemoriaPrincipal{
 	};
     
     private:
-      int memoriaDatos[96]; //48 * 2
-      int memoriaDatosWritingIndex = 0;
-      int memoriaInstrucciones[640]; //80 * 8
+      int memoriaDatos[MEMORIADATOS_LENGTH]; //48 * 2
+      int memoriaInstrucciones[MEMORIAINSTRUCCIONES_LENGTH]; //80 * 8
+      int memoriaInstruccionesWritingIndex = 0;
       std::string nombreDelFolderContenedor = "HILILLOS-PRUEBA FINAL-CI0120";
     
     public:
@@ -23,5 +27,6 @@ class MemoriaPrincipal{
       int storeDato(int dir, int dato);
       int load_hilo(int n);
       int printData();
+      int printInstructions();
 };
 #endif

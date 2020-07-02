@@ -15,7 +15,7 @@ int byte[4];
 MemoriaPrincipal::MemoriaPrincipal()
 {
 	// Llena  toda la memoria de '1' por default
-	for(int i = 0; i < sizeof(memoriaDatos); i++)
+	for(int i = 0; i < MEMORIADATOS_LENGTH; i++)
 	{
 		memoriaDatos[i] = 1;
 	}
@@ -69,16 +69,37 @@ inst_t MemoriaPrincipal::getInst(int dir)
 
 int MemoriaPrincipal::printData()
 {
+	
 	std::string sep = "\t";
 	std::string str;
-	str = "mem:" + sep + "+0" + sep + "+1" + sep + "+2" + sep + "+3" + sep + '\n';
-	for(int i = 0; i < sizeof(memoriaDatos); i+=4)
+	str = "mem:" + sep + "+0" + sep + "+4" + sep + "+8" + sep + "+12" + sep + '\n';
+	str += "-----------------------------------\n";
+	for(int i = 0; i < MEMORIADATOS_LENGTH; i+=4)
 	{
-		str += "[" + std::to_string(i) + "]" + sep
+		str += "[" + std::to_string(i*4) + "]" + sep
 			+ std::to_string(memoriaDatos[i]) + sep
 			+ std::to_string(memoriaDatos[i+1]) + sep
 			+ std::to_string(memoriaDatos[i+2]) + sep
 			+ std::to_string(memoriaDatos[i+3]) + '\n';
+	}
+	std::cout << str << std::endl;
+	return 0;
+}
+
+int MemoriaPrincipal::printInstructions()
+{
+	
+	std::string sep = "\t";
+	std::string str;
+	str = "ins:" + sep + "+0" + sep + "+1" + sep + "+2" + sep + "+3" + sep + '\n';
+	str += "-----------------------------------\n";
+	for(int i = 0; i < MEMORIAINSTRUCCIONES_LENGTH; i+=4)
+	{
+		str += "[" + std::to_string(i) + "]" + sep
+			+ std::to_string(memoriaInstrucciones[i]) + sep
+			+ std::to_string(memoriaInstrucciones[i+1]) + sep
+			+ std::to_string(memoriaInstrucciones[i+2]) + sep
+			+ std::to_string(memoriaInstrucciones[i+3]) + '\n';
 	}
 	std::cout << str << std::endl;
 	return 0;
@@ -104,11 +125,13 @@ int MemoriaPrincipal::load_hilo(int n)
 			// Le copiamos los contenidos de tp
 			char* cstr = new char[tp.length()+1];
 			std::strcpy(cstr, tp.c_str());
+			///std::cerr << "Must tokenize: " << cstr << std::endl;
 			// get the first token
 			token = strtok(cstr, " ");
 			// walk through other tokens
 			while( token != NULL ) {
-			  memoriaDatos[memoriaDatosWritingIndex++] = std::stoi(token);
+			  ///std::cerr << "#" << memoriaInstruccionesWritingIndex << " = " << token << std::endl;
+			  memoriaInstrucciones[memoriaInstruccionesWritingIndex++] = std::stoi(token);
 			  token = strtok(NULL, " ");
 			}
 		}
