@@ -129,7 +129,8 @@ int MemoriaPrincipal::load_hilo(int n)
 			// get the first token
 			token = strtok(cstr, " ");
 			// walk through other tokens
-			while( token != NULL ) {
+			while( token != NULL )
+			{
 			  ///std::cerr << "#" << memoriaInstruccionesWritingIndex << " = " << token << std::endl;
 			  memoriaInstrucciones[memoriaInstruccionesWritingIndex++] = std::stoi(token);
 			  token = strtok(NULL, " ");
