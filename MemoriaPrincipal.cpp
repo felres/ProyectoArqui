@@ -25,7 +25,7 @@ int getData(int dir)
 	return memoriaDatos[dir/4];
 }
 
-int storeDato(int dir, int dato)
+int MemoriaPrincipal::storeDato(int dir, int dato)
 {
 	if(dir > 383)
 	{
@@ -40,7 +40,7 @@ int storeDato(int dir, int dato)
  * Ocupa corrimiento
  * Empieza en la 384 y llega hasta 1020.
  */
-inst_t getInst(int dir)
+inst_t MemoriaPrincipal::getInst(int dir)
 {
 	if(dir < 383)
 	{
@@ -53,5 +53,51 @@ inst_t getInst(int dir)
 		ins.byte[i] = memoriaInstrucciones[dir-384 + i];
 	}
 	return ins;
+}
+
+int MemoriaPrincipal::printData()
+{
+	std::string sep = '\t';
+	std::string str;
+	str = "mem:" + sep + "+0" + sep + "+1" + sep + "+2" + sep + "+3" + sep + '\n';
+	for(int i = 0; i < memoriaDatos.length; i+=4)
+	{
+		str += "[" + i + "]" + sep
+			+ memoriaDatos[i] + sep
+			+ memoriaDatos[i+1] + sep
+			+ memoriaDatos[i+2] + sep
+			+ memoriaDatos[i+3] + '\n';
+	}
+	printf(str);
+	return 0;
+}
+
+int MemoriaPrincipal::load_hilo(int n)
+{
+	// Construir el string
+	std::string nombreDelArchivo = nombreDelFolderContenedor + "/" + itoa(n) + ".txt";
+	std::fstream newfile;
+	// Abrir archivo para leer
+	newfile.open(nombreDelArchivo,std::ios::in);
+	if (newfile.is_open())
+	{
+		std::string tp;
+		// Leer dato. Instertar hilo en string
+		while(getline(newfile, tp))
+		{
+			/// aca ocupo hacer tokenization de los numeros y ponerlos en la matriz
+			// tp contiene la linea que queremos tokenizar
+			char *token;
+			// get the first token
+			token = strtok(str, s);
+			// walk through other tokens
+			while( token != NULL ) {
+			  memoriaDatos[memoriaDatosWritingIndex++] = stoi(token);
+			  token = strtok(NULL, s);
+			}
+		}
+		//siempre cerrar
+		newfile.close();
+	}
 }
 
