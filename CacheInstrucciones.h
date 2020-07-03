@@ -8,10 +8,6 @@
 typedef int tag_t;
 typedef int reg_t;
 
-struct inst_t{
-    int byte[4];
-};
-
 class CacheInstrucciones{
     private:
         struct bloque{

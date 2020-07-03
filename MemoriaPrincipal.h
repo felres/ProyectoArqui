@@ -2,7 +2,7 @@
 #define MEMORIA_PRINCIPAL
 #include <iostream>
 #include <fstream>
-#include "CacheInstrucciones.h"
+#include "inst_t.h"
 #include <string>
 #define MEMORIADATOS_LENGTH 96
 #define MEMORIAINSTRUCCIONES_LENGTH 640
