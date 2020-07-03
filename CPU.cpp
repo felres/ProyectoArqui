@@ -2,9 +2,10 @@
 
 
 struct TCB{
-    int PC;
-    int reg[32];
+    reg_t PC;
+    reg_t reg[32];
     int id; 
+    int cant_ciclos; 
 };
 
 CPU::CPU(int quantum){
@@ -26,6 +27,8 @@ void CPU::cpu_init(){
         if(burst == quantum){
             /* Se acaba el tiempo de ejecucion */ 
             store_context();
+        }else if(thread_fin){
+            store_terminated_context();
         }
     }
 }
@@ -42,6 +45,9 @@ void CPU::load_context(){
     PC = tcb.PC;
     /* Load thread id */
     thread_id = tcb.id;
+    /* Load cant_ciclos */
+    cant_ciclos = tcb.cant_ciclos;
+    start_clock = reloj;
     burst = 0;
 }
 
@@ -54,8 +60,26 @@ void CPU::store_context(){
         tcb.reg[r] = reg[r];
     /* Store thread id */
     tcb.id = thread_id;
+    /* Store cant_ciclos */
+    tcb.cant_ciclos = cant_ciclos + (reloj - start_clock);
     /* Store PCB in queue */
     roundRobbing_queue.push(tcb);
+}
+
+void CPU::store_terminated_context()
+{
+     TCB tcb;
+    /* Store PC */
+    tcb.PC = PC;
+    /* Store Registers */
+    for(int r = 0; r < 32; ++r)
+        tcb.reg[r] = reg[r];
+    /* Store thread id */
+    tcb.id = thread_id;
+     /* Store cant_ciclos */
+    tcb.cant_ciclos = cant_ciclos + (reloj - start_clock);
+    /* Store PCB in queue */
+    hilos_terminados.emplace_back(tcb);
 }
 
 void CPU::addi(reg_i x1, reg_i x2, int n){
@@ -158,5 +182,34 @@ void CPU::decode_execute(){
         case 999:
             thread_fin = 1;
         break;
+    }
+}
+
+void CPU::load_memory(int cant_hilos)
+{
+    for(int hilo = 0; hilo < cant_hilos; ++hilo){
+        TCB tcb;
+        tcb.id = hilo;
+        tcb.PC = MP->load_hilo(hilo);
+        for(reg_i r; r < 32; ++r)
+            tcb.reg[r] = 0;
+    }
+}   
+
+ void CPU::set_ptr(CacheInstrucciones *CI, MemoriaPrincipal *MP, CacheDatos *CD){
+     this->CD = CD;
+     this->MP = MP;
+     this->CI = CI;
+ }
+
+void CPU::printHilos(){
+    std::cout << "Datos de hilos: " << std::endl;
+    for(auto hilo: hilos_terminados){
+        std::cout << "\tHilo " << hilo.id << ":" << std::endl;
+        std::cout << "\tRegistros:" << std::endl;
+        for(reg_i r; r < 32; ++r)
+            std::cout << "\tr" << r << " = " << hilo.reg[r] << " , ";
+        std::cout << std::endl;
+        std::cout << "\tCantidad de ciclos: " << hilo.cant_ciclos << std::endl;
     }
 }

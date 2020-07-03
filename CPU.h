@@ -17,8 +17,11 @@ class MemoriaPrincipal;
 class CPU{
     private:
         std::queue<TCB> roundRobbing_queue;
+        std::vector<TCB> hilos_terminados; 
         int quantum; 
         int thread_fin;
+        int cant_ciclos;
+        int start_clock;
         reg_t reloj; 
         reg_t burst; 
         reg_t reg[32];
@@ -27,14 +30,14 @@ class CPU{
         reg_t MAR;
         reg_t thread_id;
         inst_t IR;
-        //CacheDatos * cd;
-        CacheInstrucciones * CI;
-        MemoriaPrincipal *mp;
+        CacheInstrucciones *CI;
+        MemoriaPrincipal *MP;
         CacheDatos *CD;
 
         void decode_execute();
         void load_context();
         void store_context();
+        void store_terminated_context();
         void addi(reg_i, reg_i, int);
         void add(reg_i, reg_i, reg_i);
         void sub(reg_i, reg_i, reg_i);
@@ -53,6 +56,9 @@ class CPU{
     public: 
         CPU(int);
         void cpu_init();
+        void load_memory(int);
+        void printHilos();
+        void set_ptr(CacheInstrucciones *, MemoriaPrincipal *, CacheDatos *)
 
 
 };
