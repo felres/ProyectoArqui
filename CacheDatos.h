@@ -1,7 +1,8 @@
 #ifndef CACHE_DATOS
 #define CACHE_DATOS
-#include "MemoriaPrincipal.h"
 using namespace std;
+#include "MemoriaPrincipal.h"
+
 class CacheDatos{
     typedef struct Bloque{
         int palabra1;

@@ -10,6 +10,7 @@ int CacheDatos::LRU(){
         }
         ++indiceLRU;
     }
+    return victima;
 }
 
 int CacheDatos::getBloque(int direccion){

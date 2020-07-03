@@ -2,17 +2,14 @@
 #define MEMORIA_PRINCIPAL
 #include <iostream>
 #include <fstream>
+#include "CacheInstrucciones.h"
 #include <string>
-
 #define MEMORIADATOS_LENGTH 96
 #define MEMORIAINSTRUCCIONES_LENGTH 640
 
+
+class CacheInstrucciones;
 class MemoriaPrincipal{
-    
-    struct inst_t{
-    int byte[4];
-	};
-    
     private:
       int memoriaDatos[MEMORIADATOS_LENGTH]; //48 * 2
       int memoriaInstrucciones[MEMORIAINSTRUCCIONES_LENGTH]; //80 * 8
@@ -23,7 +20,7 @@ class MemoriaPrincipal{
       MemoriaPrincipal();
       ~MemoriaPrincipal();
       int getData(int dir);
-      //inst_t getInst(int dir);
+      inst_t getInst(int dir);
       int storeDato(int dir, int dato);
       int load_hilo(int n);
       int printData();

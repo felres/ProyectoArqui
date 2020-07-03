@@ -1,17 +1,16 @@
 #ifndef CACHEINST   
-#define CAHCEINST
+#define CACHEINST
 #include <memory>
 #include "MemoriaPrincipal.h"
-
 #define BLOCK_SIZE 8
 #define WORD_SIZE 4
+
+typedef int tag_t;
+typedef int reg_t;
 
 struct inst_t{
     int byte[4];
 };
-
-typedef int tag_t;
-typedef int reg_t;
 
 class CacheInstrucciones{
     private:

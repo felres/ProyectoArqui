@@ -2,18 +2,19 @@
 #define CPU_64
 #include <iostream>
 #include <queue>
-//#include "CacheDatos.h"
-//#include "MemoriaPrincipal.h"
-#include "CacheInstrucciones.h"
 #include <memory>
+#include "CacheDatos.h"
 
 typedef int reg_t;
 typedef int reg_i; 
 
-struct TCB;
+struct TCB{
+    reg_t PC;
+    reg_t reg[32];
+    int id; 
+    int cant_ciclos; 
+};
 
-class CacheDatos;
-class MemoriaPrincipal;
 class CPU{
     private:
         std::queue<TCB> roundRobbing_queue;
@@ -58,7 +59,7 @@ class CPU{
         void cpu_init();
         void load_memory(int);
         void printHilos();
-        void set_ptr(CacheInstrucciones *, MemoriaPrincipal *, CacheDatos *)
+        void set_ptr(CacheInstrucciones *, MemoriaPrincipal *, CacheDatos *);
 
 
 };

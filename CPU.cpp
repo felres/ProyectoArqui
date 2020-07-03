@@ -1,12 +1,6 @@
 #include "CPU.h"
 
 
-struct TCB{
-    reg_t PC;
-    reg_t reg[32];
-    int id; 
-    int cant_ciclos; 
-};
 
 CPU::CPU(int quantum){
     this->quantum = quantum; 
@@ -103,11 +97,11 @@ void CPU::div(reg_i x1, reg_i x2, reg_i x3){
 }
 
 void CPU::lw(reg_i x1, reg_i x2, int n){
-    reg[x1] = CD->lw(reg[x2] + n, &reloj);
+    reg[x1] = CD->lw(reg[x2] + n, reloj);
 }
 
 void CPU::sw(reg_i x2, reg_i x1, int n){
-    CD->sw(reg[x2] + n, reg[x1], &reloj);
+    CD->sw(reg[x2] + n, reg[x1], reloj);
 }
 
 void CPU::beq(reg_i x1, reg_i x2, int n){
@@ -121,11 +115,11 @@ void CPU::bne(reg_i x1, reg_i x2, int n){
 }
 
 void CPU::lr(reg_i x1, reg_i x2){
-    reg[x1] = CD->lr(reg[x2], &RL, &reloj);
+    reg[x1] = CD->lr(reg[x2], RL, reloj);
 }
 
 void CPU::sc(reg_i x2, reg_i x1, int n){
-    CD->sc(reg[x2] + n, reg[x1], &RL, &reloj);
+    CD->sc(reg[x2] + n, reg[x1], RL, reloj);
 }
 
 void CPU::jal(reg_i x1, int n){

@@ -8,10 +8,8 @@
 
 #include "MemoriaPrincipal.h"
 
-struct inst_t{
-int byte[4];
-};
-	
+
+
 MemoriaPrincipal::MemoriaPrincipal()
 {
 	// Llena  toda la memoria de '1' por default
@@ -51,21 +49,21 @@ int MemoriaPrincipal::storeDato(int dir, int dato)
  * Ocupa corrimiento
  * Empieza en la 384 y llega hasta 1020.
  */
- /*
 inst_t MemoriaPrincipal::getInst(int dir)
 {
+	inst_t ins;
 	if(dir < 383)
 	{
 		std::cerr << "ERROR 2" << std::endl;
-		return -1;
+		ins.byte[0] = -1;
+		return ins;
 	}
-	inst_t ins;
 	for(int i = 0; i < 4; i++)
 	{
 		ins.byte[i] = memoriaInstrucciones[dir-384 + i];
 	}
 	return ins;
-}*/
+}
 
 int MemoriaPrincipal::printData()
 {
