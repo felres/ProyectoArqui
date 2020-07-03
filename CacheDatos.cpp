@@ -110,6 +110,7 @@ void CacheDatos::sw(int direccion,int word,int & reloj){
     //El bloque esta en la cache, y el bloque no esta modificado
         Datos[indice_Cache].estado = 'M';
         //Deja el estado en modificado
+        Datos[indice_Cache].usado = 1;
         if(palabra = 1){
             Datos[indice_Cache].palabra1 = word;
         }else{
@@ -117,7 +118,8 @@ void CacheDatos::sw(int direccion,int word,int & reloj){
         }
     }else{
         if(indice_Cache != -1 && Datos[indice_Cache].estado == 'M'){
-        //bloque en cache pero no modificado
+        //bloque en cache pero modificado
+            Datos[indice_Cache].usado = 1;
             if(palabra = 1){
                 Datos[indice_Cache].palabra1 = word;
             }else{
@@ -151,6 +153,7 @@ int CacheDatos::lr(int direccion,int & RL,int & reloj){
     RL = direccion;
     if(indice_Cache != -1){
     //El bloque se encuentra en memoria
+        Datos[indice_Cache].usado = 1;
         if(palabra = 1){
             ret = Datos[indice_Cache].palabra1;
         }else{
@@ -191,9 +194,11 @@ bool CacheDatos::sc(int direccion,int word,int & RL, int & reloj){
             }else{
                 Datos[indice_Cache].palabra2 = word;
             }
+            Datos[indice_Cache].usado = 1;
         }else{
             if(indice_Cache != -1 && Datos[indice_Cache].estado == 'M'){
-            //bloque en cache pero no modificado
+            //bloque en cache pero modificado
+                Datos[indice_Cache].usado = 1;
                 if(palabra = 1){
                     Datos[indice_Cache].palabra1 = word;
                 }else{
