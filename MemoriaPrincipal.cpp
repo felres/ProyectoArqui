@@ -105,6 +105,7 @@ int MemoriaPrincipal::printInstructions()
 
 int MemoriaPrincipal::load_hilo(int n)
 {
+	int cp = memoriaInstruccionesWritingIndex;
 	// Construir el string
 	std::string nombreDelArchivo = nombreDelFolderContenedor + "/" + std::to_string(n) + ".txt";
 	std::fstream newfile;
@@ -137,6 +138,6 @@ int MemoriaPrincipal::load_hilo(int n)
 		//siempre cerrar
 		newfile.close();
 	}
-	return 0;
+	return cp;
 }
 
