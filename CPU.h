@@ -4,6 +4,7 @@
 #include <queue>
 #include <memory>
 #include "CacheDatos.h"
+#include "CacheInstrucciones.h"
 
 typedef int reg_t;
 typedef int reg_i; 

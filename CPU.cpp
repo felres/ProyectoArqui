@@ -1,7 +1,6 @@
 #include "CPU.h"
 
 
-
 CPU::CPU(int quantum){
     this->quantum = quantum; 
 }
