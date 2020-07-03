@@ -230,7 +230,13 @@ void CacheDatos::imprimir(){
         cout << "\tPalabra 2 = " << Datos[i].palabra2 << endl;
         cout << "\tEstado = " << Datos[i].estado << endl;
     }
-    cout << "\tTasa de fallos" << cantFallos/cantSoli<< endl;
-    cout << "\tTasa de Fallos lw" << cantFallosLw/cantSoliLw << endl;
-    cout << "\tTasa de Fallos sw" << cantFallosSw/cantSoliSw << endl;
+    if(cantSoli){
+        cout << "\tTasa de fallos" << cantFallos/cantSoli<< endl;
+    }
+    if(cantSoliLw){
+        cout << "\tTasa de Fallos lw" << cantFallosLw/cantSoliLw << endl;
+    }
+    if(cantSoliSw){
+        cout << "\tTasa de Fallos sw" << cantFallosSw/cantSoliSw << endl;
+    }
 }
