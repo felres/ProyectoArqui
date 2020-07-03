@@ -10,18 +10,20 @@ void CPU::cpu_init(){
         thread_fin = 0;
         load_context();
         while(burst != quantum && !thread_fin){
+            burst += 1;
             /* Fetch de instruccion */
             IR = CI->lw(&PC);
             /* Decodificacion y ejecucion de instruccion */
             decode_execute();
             /* Ciclo de instruccion */
             reloj += 1;
+            PC += 4; 
         }
-        if(burst == quantum){
+        if(thread_fin){
+            store_terminated_context();
+        }else if(burst == quantum){
             /* Se acaba el tiempo de ejecucion */ 
             store_context();
-        }else if(thread_fin){
-            store_terminated_context();
         }
     }
 }
@@ -57,6 +59,7 @@ void CPU::store_context(){
     tcb.cant_ciclos = cant_ciclos + (reloj - start_clock);
     /* Store PCB in queue */
     roundRobbing_queue.push(tcb);
+    RL = -1;
 }
 
 void CPU::store_terminated_context()
@@ -118,7 +121,9 @@ void CPU::lr(reg_i x1, reg_i x2){
 }
 
 void CPU::sc(reg_i x2, reg_i x1, int n){
-    CD->sc(reg[x2] + n, reg[x1], RL, reloj);
+    int exito = CD->sc(reg[x2] + n, reg[x1], RL, reloj);
+    if(exito == 0)
+        reg[x1] = exito;
 }
 
 void CPU::jal(reg_i x1, int n){
@@ -186,6 +191,7 @@ void CPU::load_memory(int cant_hilos)
         tcb.PC = MP->load_hilo(hilo);
         for(reg_i r = 0; r < 32; ++r)
             tcb.reg[r] = 0;
+        tcb.cant_ciclos = 0;
         roundRobbing_queue.push(tcb);
     }
 }   

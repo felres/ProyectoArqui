@@ -138,6 +138,6 @@ int MemoriaPrincipal::load_hilo(int n)
 		//siempre cerrar
 		newfile.close();
 	}
-	return cp;
+	return 384 + cp;
 }
 

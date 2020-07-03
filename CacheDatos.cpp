@@ -44,7 +44,7 @@ int CacheDatos::CambiarBloque(int direccion){
     Datos[victima].id = getBloque(direccion);
     Datos[victima].estado = 'C';
     Datos[victima].palabra1 = MP->getData(mp_bloque*8);
-    Datos[victima].palabra1 = MP->getData(mp_bloque*8 + 4);
+    Datos[victima].palabra2 = MP->getData(mp_bloque*8 + 4);
     Datos[victima].usado = 1;
     return victima;
 }
@@ -56,6 +56,7 @@ CacheDatos::CacheDatos(MemoriaPrincipal * MP){
         Datos[i].palabra2 = 0;
         Datos[i].estado = i;
         Datos[i].id = -1;
+        Datos[i].usado = 0;
     }
     indiceLRU = 0;
     cantFallos = 0;
@@ -88,6 +89,7 @@ int CacheDatos::lw(int direccion,int & reloj){
     //El bloque no se encuentra en memoria
         ++cantFallosLw;
         indice_Cache = CambiarBloque(direccion);
+        reloj += 44; 
         //Recupera el bloque de MP, y da el indice donde se guardo
         if(palabra = 1){
             ret = Datos[indice_Cache].palabra1;
@@ -130,6 +132,7 @@ void CacheDatos::sw(int direccion,int word,int & reloj){
         //Bloque no en cache
             ++cantFallosSw;
             indice_Cache = CambiarBloque(direccion);
+            reloj += 44; 
             //Recupera el bloque de MP, y da el indice donde se guardo
             Datos[indice_Cache].estado = 'M';
             if(palabra = 1){
@@ -164,6 +167,7 @@ int CacheDatos::lr(int direccion,int & RL,int & reloj){
     //El bloque no se encuentra en memoria
         ++cantSoliLw;
         indice_Cache = CambiarBloque(direccion);
+        reloj += 44; 
         //Recupera el bloque de MP, y da el indice donde se guardo
         if(palabra = 1){
             ret = Datos[indice_Cache].palabra1;
@@ -209,6 +213,7 @@ bool CacheDatos::sc(int direccion,int word,int & RL, int & reloj){
             //Bloque no en cache
                 ++cantFallosSw;
                 indice_Cache = CambiarBloque(direccion);
+                reloj += 44; 
                 //Recupera el bloque de MP, y da el indice donde se guardo
                 Datos[indice_Cache].estado = 'M';
                 if(palabra = 1){

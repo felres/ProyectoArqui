@@ -32,6 +32,7 @@ int main(int argc, char *argv[]){
     CacheDatos CD(&MP);
     CPU cpu(quantum);
     cpu.set_ptr( &CI, &MP, &CD);
+    cpu.load_memory(cant_hilos);
     cpu.cpu_init();
     cpu.printHilos();
     CD.imprimir();
