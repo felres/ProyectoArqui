@@ -1,12 +1,12 @@
 #include "CacheDatos.h"
 
-int LRU(){
+int CacheDatos::LRU(){
     int victima = -1;
     while(victima == -1){
-        if(Datos[indiceLRU].usado == FALSE){
+        if(Datos[indiceLRU].usado == 0){
             victima = indiceLRU;
         }else{
-            Datos[indiceLRU].usado = FALSE;
+            Datos[indiceLRU].usado = 0;
         }
         ++indiceLRU;
     }
@@ -29,7 +29,7 @@ int CacheDatos::getIndiceCache(int mp_bloque){\
             ind = i;
         }
     }
-    return ind
+    return ind;
 }
 int CacheDatos::CambiarBloque(int direccion){
     ++cantFallos;
@@ -44,12 +44,12 @@ int CacheDatos::CambiarBloque(int direccion){
     Datos[victima].estado = 'C';
     Datos[victima].palabra1 = MP->getData(mp_bloque*8);
     Datos[victima].palabra1 = MP->getData(mp_bloque*8 + 4);
-    Datos[victima].usado = TRUE;
-    return ind
+    Datos[victima].usado = 1;
+    return victima;
 }
 
-CacheDatos::CacheDatos(MemPrincipal * MP){
-    this->MP = MP
+CacheDatos::CacheDatos(MemoriaPrincipal * MP){
+    this->MP = MP;
     for(int i = 0; i < 4; ++i){
         Datos[i].palabra1 = 0;
         Datos[i].palabra2 = 0;
@@ -71,13 +71,13 @@ int CacheDatos::lw(int direccion,int & reloj){
     ++cantSoliLw;
     int mp_bloque = getBloque(direccion);
     //Se guarda cual es el identificador de el bloque que se quiere optener
-    int palabra = getPalabra(direccion)
+    int palabra = getPalabra(direccion);
     //se guarda si se busca la palabra 1 o la 2 del bloque
     int indice_Cache = getIndiceCache(mp_bloque);
     //optiene el indice del bloque dentro de la cache, si no esta se retorna -1
     if(indice_Cache != -1){
     //El bloque se encuentra en memoria
-        Datos[indice_Cache].usado = TRUE;
+        Datos[indice_Cache].usado = 1;
         if(palabra = 1){
             ret = Datos[indice_Cache].palabra1;
         }else{
@@ -102,13 +102,13 @@ void CacheDatos::sw(int direccion,int word,int & reloj){
     ++cantSoliSw;
     int mp_bloque = getBloque(direccion);
     //Se guarda cual es el identificador de el bloque que se quiere optener
-    int palabra = getPalabra(direccion)
+    int palabra = getPalabra(direccion);
     //se guarda si se busca la palabra 1 o la 2 del bloque
     int indice_Cache = getIndiceCache(mp_bloque);
     //optiene el indice del bloque dentro de la cache, si no esta se retorna -1
-    if(indice_Cache != -1 && Datos[indice_Cache] != M){
+    if(indice_Cache != -1 && Datos[indice_Cache].estado != 'M'){
     //El bloque esta en la cache, y el bloque no esta modificado
-        Datos[indice_Cache].estado = M;
+        Datos[indice_Cache].estado = 'M';
         //Deja el estado en modificado
         if(palabra = 1){
             Datos[indice_Cache].palabra1 = word;
@@ -116,7 +116,7 @@ void CacheDatos::sw(int direccion,int word,int & reloj){
             Datos[indice_Cache].palabra2 = word;
         }
     }else{
-        if(indice_Cache != -1 && Datos[indice_Cache] == M){
+        if(indice_Cache != -1 && Datos[indice_Cache].estado == 'M'){
         //bloque en cache pero no modificado
             if(palabra = 1){
                 Datos[indice_Cache].palabra1 = word;
@@ -125,10 +125,10 @@ void CacheDatos::sw(int direccion,int word,int & reloj){
             }
         }else{
         //Bloque no en cache
-            +=cantFallosSw;
+            ++cantFallosSw;
             indice_Cache = CambiarBloque(direccion);
             //Recupera el bloque de MP, y da el indice donde se guardo
-            Datos[indice_Cache] = M;
+            Datos[indice_Cache].estado = 'M';
             if(palabra = 1){
                 Datos[indice_Cache].palabra1 = word;
             }else{
@@ -141,13 +141,14 @@ void CacheDatos::sw(int direccion,int word,int & reloj){
 int CacheDatos::lr(int direccion,int & RL,int & reloj){
     ++cantSoli;
     ++cantSoliLw;
+    int ret = 0;
     int mp_bloque = getBloque(direccion);
     //Se guarda cual es el identificador de el bloque que se quiere optener
-    int palabra = getPalabra(direccion)
+    int palabra = getPalabra(direccion);
     //se guarda si se busca la palabra 1 o la 2 del bloque
     int indice_Cache = getIndiceCache(mp_bloque);
     //optiene el indice del bloque dentro de la cache, si no esta se retorna -1
-    RL = direccion
+    RL = direccion;
     if(indice_Cache != -1){
     //El bloque se encuentra en memoria
         if(palabra = 1){
@@ -166,23 +167,24 @@ int CacheDatos::lr(int direccion,int & RL,int & reloj){
             ret = Datos[indice_Cache].palabra2;
         }
     }
+    return ret;
 }
 
-bool CacheDatos::sc(int direccion,int word,int RL, int & reloj){
-    bool exito = False;
+bool CacheDatos::sc(int direccion,int word,int & RL, int & reloj){
+    bool exito = 0;
     ++cantSoli;
     ++cantSoliSw;
     if(direccion == RL){
-        exito = True;
+        exito = 1;
         int mp_bloque = getBloque(direccion);
         //Se guarda cual es el identificador de el bloque que se quiere optener
-        int palabra = getPalabra(direccion)
+        int palabra = getPalabra(direccion);
         //se guarda si se busca la palabra 1 o la 2 del bloque
         int indice_Cache = getIndiceCache(mp_bloque);
         //optiene el indice del bloque dentro de la cache, si no esta se retorna -1
-        if(indice_Cache != -1 && Datos[indice_Cache] != M){
+        if(indice_Cache != -1 && Datos[indice_Cache].estado != 'M'){
         //El bloque esta en la cache, y el bloque no esta modificado
-            Datos[indice_Cache].estado = M;
+            Datos[indice_Cache].estado = 'M';
             //Deja el estado en modificado
             if(palabra = 1){
                 Datos[indice_Cache].palabra1 = word;
@@ -190,7 +192,7 @@ bool CacheDatos::sc(int direccion,int word,int RL, int & reloj){
                 Datos[indice_Cache].palabra2 = word;
             }
         }else{
-            if(indice_Cache != -1 && Datos[indice_Cache] == M){
+            if(indice_Cache != -1 && Datos[indice_Cache].estado == 'M'){
             //bloque en cache pero no modificado
                 if(palabra = 1){
                     Datos[indice_Cache].palabra1 = word;
@@ -202,7 +204,7 @@ bool CacheDatos::sc(int direccion,int word,int RL, int & reloj){
                 ++cantFallosSw;
                 indice_Cache = CambiarBloque(direccion);
                 //Recupera el bloque de MP, y da el indice donde se guardo
-                Datos[indice_Cache] = M;
+                Datos[indice_Cache].estado = 'M';
                 if(palabra = 1){
                     Datos[indice_Cache].palabra1 = word;
                 }else{

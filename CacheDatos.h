@@ -1,14 +1,14 @@
 #ifndef CACHE_DATOS
 #define CACHE_DATOS
 #include "MemoriaPrincipal.h"
-
+using namespace std;
 class CacheDatos{
     typedef struct Bloque{
         int palabra1;
         int palabra2;
         char estado;
         int id;
-        bool usado;
+        int usado;
     }Bloque;
     private:
       int cantFallos;
@@ -18,11 +18,13 @@ class CacheDatos{
       int cantFallosSw;
       int cantSoliSw;
       int indiceLRU;
-      Bloque Datos[4] MemoriaPrincipal * MP;
+      Bloque Datos[4];
+      MemoriaPrincipal * MP;
       int getBloque(int);
       int getPalabra(int);
       int getIndiceCache(int);
       int CambiarBloque(int);
+      int LRU();
     public:
       CacheDatos(MemoriaPrincipal *);
       ~CacheDatos();
