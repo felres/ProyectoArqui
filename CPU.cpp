@@ -184,8 +184,9 @@ void CPU::load_memory(int cant_hilos)
         TCB tcb;
         tcb.id = hilo;
         tcb.PC = MP->load_hilo(hilo);
-        for(reg_i r; r < 32; ++r)
+        for(reg_i r = 0; r < 32; ++r)
             tcb.reg[r] = 0;
+        roundRobbing_queue.push(tcb);
     }
 }   
 
