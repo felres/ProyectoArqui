@@ -8,7 +8,7 @@
  * @mainpage Simulador CPU
  * 
  * @section intro Instrucciones de Uso
- * Leer el README. En la pagina de doxygen se encuentra bajo *Paginas Relacionadas*
+ * Leer el README. En la pagina de doxygen se encuentra bajo *Paginas Relacionadas*.
  */
 #include <iostream>
 #include <stdlib.h>
