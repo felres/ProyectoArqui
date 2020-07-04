@@ -24,7 +24,7 @@ class CacheDatos{
       int getBloque(int);
       int getPalabra(int);
       int getIndiceCache(int);
-      int CambiarBloque(int);
+      int CambiarBloque(int,int &);
       int LRU();
     public:
       CacheDatos(MemoriaPrincipal *);
