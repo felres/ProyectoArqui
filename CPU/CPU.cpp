@@ -208,8 +208,9 @@ void CPU::printHilos(){
         std::cout << "\tHilo " << hilo.id << ":" << std::endl;
         std::cout << "\t\tRegistros:" << std::endl;
         for(reg_i r = 0; r < 32;){
+            std::cout << "\t\t";
             for(int i = 0; i < 4 && r < 32; ++i){
-                std::cout << "\t\tx" << r << " = " << hilo.reg[r];
+                std::cout << "x" << r << " = " << hilo.reg[r] << "  ";
                 ++r;
             }
             std::cout << std::endl;

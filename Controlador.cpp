@@ -30,7 +30,6 @@ int main(int argc, char *argv[]){
     CPU cpu(quantum);
     cpu.set_ptr( &CI, &MP, &CD);
     cpu.load_memory(cant_hilos);
-    MP.printInstructions();
     cpu.cpu_init();
     cpu.printHilos();
     CD.imprimir();
