@@ -1,7 +1,7 @@
 #ifndef CACHEINST   
 #define CACHEINST
 #include <memory>
-#include "MemoriaPrincipal.h"
+#include "../MemoriaPrincipal/MemoriaPrincipal.h"
 #define BLOCK_SIZE 8
 #define WORD_SIZE 4
 

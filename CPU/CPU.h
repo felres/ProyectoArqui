@@ -3,8 +3,8 @@
 #include <iostream>
 #include <queue>
 #include <memory>
-#include "CacheDatos.h"
-#include "CacheInstrucciones.h"
+#include "../CacheDatos/CacheDatos.h"
+#include "../CacheInstrucciones/CacheInstrucciones.h"
 
 typedef int reg_t;
 typedef int reg_i; 

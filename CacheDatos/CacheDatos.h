@@ -1,7 +1,7 @@
 #ifndef CACHE_DATOS
 #define CACHE_DATOS
 using namespace std;
-#include "MemoriaPrincipal.h"
+#include "../MemoriaPrincipal/MemoriaPrincipal.h"
 
 class CacheDatos{
     typedef struct Bloque{
@@ -21,6 +21,12 @@ class CacheDatos{
       int indiceLRU;
       Bloque Datos[4];
       MemoriaPrincipal * MP;
+      /* 
+       * Efecto:
+       * Modifica:
+       * @param 
+       * @return 
+       */
       int getBloque(int);
       int getPalabra(int);
       int getIndiceCache(int);

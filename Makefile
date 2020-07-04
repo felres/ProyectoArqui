@@ -1,5 +1,3 @@
-completeP: Controlador.cpp inst_t.h CacheDatos.h CacheDatos.cpp CacheInstrucciones.h CacheInstrucciones.cpp CPU.h CPU.cpp MemoriaPrincipal.h MemoriaPrincipal.cpp
-	g++ Controlador.cpp inst_t.h CacheDatos.h CacheDatos.cpp CacheInstrucciones.h CacheInstrucciones.cpp CPU.h CPU.cpp MemoriaPrincipal.h MemoriaPrincipal.cpp -o test
+completeP: */*.cpp
+	g++ Controlador.cpp $^ -o cpu -g
 
-pruebaMP: MemoriaPrincipal.h MemoriaPrincipal.cpp pruebaMP.cpp
-	g++ MemoriaPrincipal.h MemoriaPrincipal.cpp pruebaMP.cpp -o test

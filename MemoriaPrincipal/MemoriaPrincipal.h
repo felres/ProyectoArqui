@@ -2,13 +2,12 @@
 #define MEMORIA_PRINCIPAL
 #include <iostream>
 #include <fstream>
-#include "inst_t.h"
+#include "../CacheInstrucciones/inst_t.h"
 #include <string>
 #define MEMORIADATOS_LENGTH 96
 #define MEMORIAINSTRUCCIONES_LENGTH 640
 
 
-class CacheInstrucciones;
 class MemoriaPrincipal{
     private:
       int memoriaDatos[MEMORIADATOS_LENGTH]; //48 * 2

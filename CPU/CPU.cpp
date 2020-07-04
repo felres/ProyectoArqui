@@ -44,6 +44,7 @@ void CPU::load_context(){
     cant_ciclos = tcb.cant_ciclos;
     start_clock = reloj;
     burst = 0;
+    RL = -1;
 }
 
 void CPU::store_context(){
@@ -59,7 +60,6 @@ void CPU::store_context(){
     tcb.cant_ciclos = cant_ciclos + (reloj - start_clock);
     /* Store PCB in queue */
     roundRobbing_queue.push(tcb);
-    RL = -1;
 }
 
 void CPU::store_terminated_context()
@@ -133,7 +133,7 @@ void CPU::jal(reg_i x1, int n){
 
 void CPU::jalr(reg_i x1, reg_i x2, int n){
     reg[x1] = PC;
-    PC += reg[x2] + n;
+    PC = reg[x2] + n;
 }
 
 void CPU::decode_execute(){
@@ -206,10 +206,14 @@ void CPU::printHilos(){
     std::cout << "Datos de hilos: " << std::endl;
     for(auto hilo: hilos_terminados){
         std::cout << "\tHilo " << hilo.id << ":" << std::endl;
-        std::cout << "\tRegistros:" << std::endl;
-        for(reg_i r; r < 32; ++r)
-            std::cout << "\tr" << r << " = " << hilo.reg[r] << " , ";
-        std::cout << std::endl;
-        std::cout << "\tCantidad de ciclos: " << hilo.cant_ciclos << std::endl;
+        std::cout << "\t\tRegistros:" << std::endl;
+        for(reg_i r = 0; r < 32;){
+            for(int i = 0; i < 4 && r < 32; ++i){
+                std::cout << "\t\tx" << r << " = " << hilo.reg[r];
+                ++r;
+            }
+            std::cout << std::endl;
+        }
+        std::cout << "\t\tCantidad de ciclos: " << hilo.cant_ciclos << std::endl;
     }
 }

@@ -139,7 +139,7 @@ void CacheDatos::sw(int direccion,int word,int & reloj){
         if(indice_Cache != -1 && Datos[indice_Cache].estado == 'M'){
         //bloque en cache pero modificado
             Datos[indice_Cache].usado = 1;
-            if(palabra = 1){
+            if(palabra == 0){
                 Datos[indice_Cache].palabra1 = word;
             }else{
                 Datos[indice_Cache].palabra2 = word;
@@ -151,7 +151,7 @@ void CacheDatos::sw(int direccion,int word,int & reloj){
             reloj += 44;
             //Recupera el bloque de MP, y da el indice donde se guardo
             Datos[indice_Cache].estado = 'M';
-            if(palabra = 1){
+            if(palabra == 0){
                 Datos[indice_Cache].palabra1 = word;
             }else{
                 Datos[indice_Cache].palabra2 = word;
@@ -174,7 +174,7 @@ int CacheDatos::lr(int direccion,int & RL,int & reloj){
     if(indice_Cache != -1){
     //El bloque se encuentra en memoria
         Datos[indice_Cache].usado = 1;
-        if(palabra = 1){
+        if(palabra == 0){
             ret = Datos[indice_Cache].palabra1;
         }else{
             ret = Datos[indice_Cache].palabra2;
@@ -185,7 +185,7 @@ int CacheDatos::lr(int direccion,int & RL,int & reloj){
         indice_Cache = CambiarBloque(direccion,reloj);
         reloj += 44;
         //Recupera el bloque de MP, y da el indice donde se guardo
-        if(palabra = 1){
+        if(palabra == 0){
             ret = Datos[indice_Cache].palabra1;
         }else{
             ret = Datos[indice_Cache].palabra2;
@@ -210,7 +210,7 @@ bool CacheDatos::sc(int direccion,int word,int & RL, int & reloj){
         //El bloque esta en la cache, y el bloque no esta modificado
             Datos[indice_Cache].estado = 'M';
             //Deja el estado en modificado
-            if(palabra = 1){
+            if(palabra == 0){
                 Datos[indice_Cache].palabra1 = word;
             }else{
                 Datos[indice_Cache].palabra2 = word;
@@ -220,7 +220,7 @@ bool CacheDatos::sc(int direccion,int word,int & RL, int & reloj){
             if(indice_Cache != -1 && Datos[indice_Cache].estado == 'M'){
             //bloque en cache pero modificado
                 Datos[indice_Cache].usado = 1;
-                if(palabra = 1){
+                if(palabra == 0){
                     Datos[indice_Cache].palabra1 = word;
                 }else{
                     Datos[indice_Cache].palabra2 = word;
@@ -232,7 +232,7 @@ bool CacheDatos::sc(int direccion,int word,int & RL, int & reloj){
                 reloj += 44;
                 //Recupera el bloque de MP, y da el indice donde se guardo
                 Datos[indice_Cache].estado = 'M';
-                if(palabra = 1){
+                if(palabra == 0){
                     Datos[indice_Cache].palabra1 = word;
                 }else{
                     Datos[indice_Cache].palabra2 = word;
@@ -247,17 +247,21 @@ void CacheDatos::imprimir(){
     cout << "Cache de Datos:" << endl;
     for(int i = 0; i < 4; ++i){
         cout << "\tBloque = " << Datos[i].id << endl;
-        cout << "\tPalabra 1 = " << Datos[i].palabra1 << endl;
-        cout << "\tPalabra 2 = " << Datos[i].palabra2 << endl;
-        cout << "\tEstado = " << Datos[i].estado << endl;
+        cout << "\t\tPalabra 1 = " << Datos[i].palabra1 << endl;
+        cout << "\t\tPalabra 2 = " << Datos[i].palabra2 << endl;
+        cout << "\t\tEstado = " << Datos[i].estado << endl;
     }
     if(cantSoli){
-        cout << "\tTasa de fallos" << cantFallos/cantSoli<< endl;
+        cout << "\tTasa de fallos: " << (double) cantFallos/cantSoli<< endl;
     }
     if(cantSoliLw){
-        cout << "\tTasa de Fallos lw" << cantFallosLw/cantSoliLw << endl;
+        cout << "\tTasa de Fallos lw: " << (double) cantFallosLw/cantSoliLw << endl;
+    }else{
+        cout << "\tTasa de Fallos lw: No" << endl;
     }
     if(cantSoliSw){
-        cout << "\tTasa de Fallos sw" << cantFallosSw/cantSoliSw << endl;
+        cout << "\tTasa de Fallos sw: " << (double) cantFallosSw/cantSoliSw << endl;
+    }else{
+        cout << "\tTasa de Fallos sw: NO" << endl;
     }
 }

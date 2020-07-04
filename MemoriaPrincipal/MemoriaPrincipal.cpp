@@ -60,7 +60,11 @@ inst_t MemoriaPrincipal::getInst(int dir)
 	}
 	for(int i = 0; i < 4; i++)
 	{
-		ins.byte[i] = memoriaInstrucciones[dir-384 + i];
+		if(dir == 2428)
+			std::cout << "";
+		else{
+			ins.byte[i] = memoriaInstrucciones[dir-384 + i];
+		}
 	}
 	return ins;
 }
