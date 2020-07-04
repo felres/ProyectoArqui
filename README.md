@@ -1,4 +1,4 @@
-![alt text](pictures/cover.jpeg "Title")
+![alt text](../pictures/cover.jpeg "Title")
 # Simulador CPU #
 
 Por Adrian Cordoba Soto B82348,
