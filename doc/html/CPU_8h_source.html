@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulador CPU: Fichero Fuente /home/falafel/Documents/ProyectoArqui/CPU/CPU.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Simulador CPU
+   </div>
+   <div id="projectbrief">Simulador de un procesador simple escrito en c++</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3e504b0d3bcf24da5cd743a5b933950b.html">CPU</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">CPU.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef CPU_64</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define CPU_64</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;queue&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../CacheDatos/CacheDatos.h&quot;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../CacheInstrucciones/CacheInstrucciones.h&quot;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">int</span> reg_t;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">int</span> reg_i; </div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structTCB.html">   12</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structTCB.html">TCB</a>{</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    reg_t PC;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    reg_t reg[32];</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">int</span> id; </div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">int</span> cant_ciclos; </div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classCPU.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCPU.html">CPU</a>{</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        std::queue&lt;TCB&gt; roundRobbing_queue;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        std::vector&lt;TCB&gt; hilos_terminados; </div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">int</span> quantum; </div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">int</span> thread_fin;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">int</span> cant_ciclos = 0;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">int</span> start_clock = 0;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        reg_t reloj = 0; </div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        reg_t burst = 0; </div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        reg_t reg[32];</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        reg_t RL = -1;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        reg_t PC = 0;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        reg_t MAR = 0;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        reg_t thread_id = 0;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="structinst__t.html">inst_t</a> IR;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classCacheInstrucciones.html">CacheInstrucciones</a> *CI;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="classMemoriaPrincipal.html">MemoriaPrincipal</a> *MP;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classCacheDatos.html">CacheDatos</a> *CD;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">void</span> decode_execute();</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> load_context();</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">void</span> store_context();</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> store_terminated_context();</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">void</span> addi(reg_i, reg_i, <span class="keywordtype">int</span>);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">void</span> add(reg_i, reg_i, reg_i);</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">void</span> sub(reg_i, reg_i, reg_i);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">void</span> mul(reg_i, reg_i, reg_i);</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">void</span> div(reg_i, reg_i, reg_i);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">void</span> lw(reg_i, reg_i, <span class="keywordtype">int</span>);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">void</span> sw(reg_i, reg_i, <span class="keywordtype">int</span>);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">void</span> beq(reg_i, reg_i, <span class="keywordtype">int</span>);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">void</span> bne(reg_i, reg_i, <span class="keywordtype">int</span>);</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> lr(reg_i, reg_i);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">void</span> sc(reg_i, reg_i, <span class="keywordtype">int</span>);</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">void</span> jal(reg_i, <span class="keywordtype">int</span>);</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">void</span> jalr(reg_i, reg_i, <span class="keywordtype">int</span>);</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">public</span>: </div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="classCPU.html">CPU</a>(<span class="keywordtype">int</span>);</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> cpu_init();</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">void</span> load_memory(<span class="keywordtype">int</span>);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> printHilos();</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">void</span> set_ptr(<a class="code" href="classCacheInstrucciones.html">CacheInstrucciones</a> *, <a class="code" href="classMemoriaPrincipal.html">MemoriaPrincipal</a> *, <a class="code" href="classCacheDatos.html">CacheDatos</a> *);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="structTCB_html"><div class="ttname"><a href="structTCB.html">TCB</a></div><div class="ttdef"><b>Definition:</b> CPU.h:12</div></div>
+<div class="ttc" id="classCacheInstrucciones_html"><div class="ttname"><a href="classCacheInstrucciones.html">CacheInstrucciones</a></div><div class="ttdef"><b>Definition:</b> CacheInstrucciones.h:11</div></div>
+<div class="ttc" id="classCacheDatos_html"><div class="ttname"><a href="classCacheDatos.html">CacheDatos</a></div><div class="ttdef"><b>Definition:</b> CacheDatos.h:6</div></div>
+<div class="ttc" id="classMemoriaPrincipal_html"><div class="ttname"><a href="classMemoriaPrincipal.html">MemoriaPrincipal</a></div><div class="ttdef"><b>Definition:</b> MemoriaPrincipal.h:11</div></div>
+<div class="ttc" id="structinst__t_html"><div class="ttname"><a href="structinst__t.html">inst_t</a></div><div class="ttdef"><b>Definition:</b> inst_t.h:4</div></div>
+<div class="ttc" id="classCPU_html"><div class="ttname"><a href="classCPU.html">CPU</a></div><div class="ttdef"><b>Definition:</b> CPU.h:19</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

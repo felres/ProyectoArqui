@@ -1,3 +1,15 @@
+/**
+ * @author Adrian Cordoba Soto B82348
+ * @author Diego Murillo Porras B85526
+ * @author Felipe Vega Vindas B78244
+ * @date 3-7-2020
+ * 
+ * @copyright GNU Public License
+ * @mainpage Simulador CPU
+ * 
+ * @section intro Instrucciones de Uso
+ * Leer el README. En la pagina de doxygen se encuentra bajo *Paginas Relacionadas*
+ */
 #include <iostream>
 #include <stdlib.h>
 #include "CPU/CPU.h"
