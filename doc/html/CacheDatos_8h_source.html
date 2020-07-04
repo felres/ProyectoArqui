@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulador CPU: Fichero Fuente /home/falafel/Documents/ProyectoArqui/CacheDatos/CacheDatos.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Simulador CPU
+   </div>
+   <div id="projectbrief">Simulador de un procesador simple escrito en c++</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_6d1759cd1cd988e6aa3911916ca5dd8c.html">CacheDatos</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">CacheDatos.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef CACHE_DATOS</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define CACHE_DATOS</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../MemoriaPrincipal/MemoriaPrincipal.h&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classCacheDatos.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCacheDatos.html">CacheDatos</a>{</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">typedef</span> <span class="keyword">struct </span>Bloque{</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keywordtype">int</span> palabra1;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keywordtype">int</span> palabra2;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordtype">char</span> estado;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">int</span> id;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">int</span> usado;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    }Bloque;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      <span class="keywordtype">int</span> cantFallos;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;      <span class="keywordtype">int</span> cantSoli;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      <span class="keywordtype">int</span> cantFallosLw;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;      <span class="keywordtype">int</span> cantSoliLw;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      <span class="keywordtype">int</span> cantFallosSw;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      <span class="keywordtype">int</span> cantSoliSw;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      <span class="keywordtype">int</span> indiceLRU;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      Bloque Datos[4];</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <a class="code" href="classMemoriaPrincipal.html">MemoriaPrincipal</a> * MP;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      <span class="keywordtype">int</span> getBloque(<span class="keywordtype">int</span>);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <span class="keywordtype">int</span> getPalabra(<span class="keywordtype">int</span>);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordtype">int</span> getIndiceCache(<span class="keywordtype">int</span>);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="keywordtype">int</span> CambiarBloque(<span class="keywordtype">int</span>,<span class="keywordtype">int</span> &amp;);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordtype">int</span> LRU();</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <a class="code" href="classCacheDatos.html">CacheDatos</a>(<a class="code" href="classMemoriaPrincipal.html">MemoriaPrincipal</a> *);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      ~<a class="code" href="classCacheDatos.html">CacheDatos</a>();</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="keywordtype">int</span> lw(<span class="keywordtype">int</span>,<span class="keywordtype">int</span> &amp;);</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="keywordtype">void</span> sw(<span class="keywordtype">int</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span> &amp;);</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="keywordtype">int</span> lr(<span class="keywordtype">int</span>,<span class="keywordtype">int</span> &amp;,<span class="keywordtype">int</span> &amp;);</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="keywordtype">bool</span> sc(<span class="keywordtype">int</span>,<span class="keywordtype">int</span> ,<span class="keywordtype">int</span> &amp;, <span class="keywordtype">int</span> &amp;);</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;      <span class="keywordtype">void</span> imprimir();</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;};</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
+<div class="ttc" id="classCacheDatos_html"><div class="ttname"><a href="classCacheDatos.html">CacheDatos</a></div><div class="ttdef"><b>Definition:</b> CacheDatos.h:6</div></div>
+<div class="ttc" id="classMemoriaPrincipal_html"><div class="ttname"><a href="classMemoriaPrincipal.html">MemoriaPrincipal</a></div><div class="ttdef"><b>Definition:</b> MemoriaPrincipal.h:11</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

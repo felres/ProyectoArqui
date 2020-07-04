@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulador CPU: Fichero Fuente /home/falafel/Documents/ProyectoArqui/MemoriaPrincipal/MemoriaPrincipal.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Simulador CPU
+   </div>
+   <div id="projectbrief">Simulador de un procesador simple escrito en c++</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_f7a22a183f2b2e8f4256afd50390ad9d.html">MemoriaPrincipal</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">MemoriaPrincipal.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef MEMORIA_PRINCIPAL</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define MEMORIA_PRINCIPAL</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../CacheInstrucciones/inst_t.h&quot;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define MEMORIADATOS_LENGTH 96</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define MEMORIAINSTRUCCIONES_LENGTH 640</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classMemoriaPrincipal.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMemoriaPrincipal.html">MemoriaPrincipal</a>{</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">int</span> memoriaDatos[MEMORIADATOS_LENGTH]; <span class="comment">//48 * 2</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">int</span> memoriaInstrucciones[MEMORIAINSTRUCCIONES_LENGTH]; <span class="comment">//80 * 8</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">int</span> memoriaInstruccionesWritingIndex = 0;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        std::string nombreDelFolderContenedor = <span class="stringliteral">&quot;HILILLOS-PRUEBA FINAL-CI0120&quot;</span>;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        </div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="classMemoriaPrincipal.html#a1ffb9d5ffec05ed9bd0fc5c3ca51d200">MemoriaPrincipal</a>();</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        ~<a class="code" href="classMemoriaPrincipal.html">MemoriaPrincipal</a>();</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classMemoriaPrincipal.html#aaf5f5abab3ddb40a88c9c695c02d29d3">getData</a>(<span class="keywordtype">int</span> dir);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="structinst__t.html">inst_t</a> <a class="code" href="classMemoriaPrincipal.html#a0ffe52092ed587006788f4c3d8965f47">getInst</a>(<span class="keywordtype">int</span> dir);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classMemoriaPrincipal.html#a0334ed61e40292259985655430efad33">storeDato</a>(<span class="keywordtype">int</span> dir, <span class="keywordtype">int</span> dato);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classMemoriaPrincipal.html#a5262cc20950dd1b8fafd3d0dae36237f">load_hilo</a>(<span class="keywordtype">int</span> n);</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classMemoriaPrincipal.html#a0f07dc1a0723d5403a176f311a27ed1a">printData</a>();</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classMemoriaPrincipal.html#ae7d66a00cbcbd3a51d99d1ec89bb26b5">printInstructions</a>();</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="classMemoriaPrincipal_html_a1ffb9d5ffec05ed9bd0fc5c3ca51d200"><div class="ttname"><a href="classMemoriaPrincipal.html#a1ffb9d5ffec05ed9bd0fc5c3ca51d200">MemoriaPrincipal::MemoriaPrincipal</a></div><div class="ttdeci">MemoriaPrincipal()</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> MemoriaPrincipal.cpp:9</div></div>
+<div class="ttc" id="classMemoriaPrincipal_html_ae7d66a00cbcbd3a51d99d1ec89bb26b5"><div class="ttname"><a href="classMemoriaPrincipal.html#ae7d66a00cbcbd3a51d99d1ec89bb26b5">MemoriaPrincipal::printInstructions</a></div><div class="ttdeci">int printInstructions()</div><div class="ttdoc">Imprimir una tabla de la memoria virtual de instrucciones. </div><div class="ttdef"><b>Definition:</b> MemoriaPrincipal.cpp:86</div></div>
+<div class="ttc" id="classMemoriaPrincipal_html_a0f07dc1a0723d5403a176f311a27ed1a"><div class="ttname"><a href="classMemoriaPrincipal.html#a0f07dc1a0723d5403a176f311a27ed1a">MemoriaPrincipal::printData</a></div><div class="ttdeci">int printData()</div><div class="ttdoc">Imprime una tabla de la memoria de datos virtual. </div><div class="ttdef"><b>Definition:</b> MemoriaPrincipal.cpp:66</div></div>
+<div class="ttc" id="classMemoriaPrincipal_html_a0ffe52092ed587006788f4c3d8965f47"><div class="ttname"><a href="classMemoriaPrincipal.html#a0ffe52092ed587006788f4c3d8965f47">MemoriaPrincipal::getInst</a></div><div class="ttdeci">inst_t getInst(int dir)</div><div class="ttdoc">Retorna la instruccion requerida por la instancia de CacheInstrucciones. </div><div class="ttdef"><b>Definition:</b> MemoriaPrincipal.cpp:43</div></div>
+<div class="ttc" id="classMemoriaPrincipal_html_a0334ed61e40292259985655430efad33"><div class="ttname"><a href="classMemoriaPrincipal.html#a0334ed61e40292259985655430efad33">MemoriaPrincipal::storeDato</a></div><div class="ttdeci">int storeDato(int dir, int dato)</div><div class="ttdoc">Guardar el dato del acche en la memoria principal. </div><div class="ttdef"><b>Definition:</b> MemoriaPrincipal.cpp:32</div></div>
+<div class="ttc" id="classMemoriaPrincipal_html"><div class="ttname"><a href="classMemoriaPrincipal.html">MemoriaPrincipal</a></div><div class="ttdef"><b>Definition:</b> MemoriaPrincipal.h:11</div></div>
+<div class="ttc" id="classMemoriaPrincipal_html_aaf5f5abab3ddb40a88c9c695c02d29d3"><div class="ttname"><a href="classMemoriaPrincipal.html#aaf5f5abab3ddb40a88c9c695c02d29d3">MemoriaPrincipal::getData</a></div><div class="ttdeci">int getData(int dir)</div><div class="ttdoc">Envia el dato requerido por la instancia del CacheDatos. </div><div class="ttdef"><b>Definition:</b> MemoriaPrincipal.cpp:21</div></div>
+<div class="ttc" id="structinst__t_html"><div class="ttname"><a href="structinst__t.html">inst_t</a></div><div class="ttdef"><b>Definition:</b> inst_t.h:4</div></div>
+<div class="ttc" id="classMemoriaPrincipal_html_a5262cc20950dd1b8fafd3d0dae36237f"><div class="ttname"><a href="classMemoriaPrincipal.html#a5262cc20950dd1b8fafd3d0dae36237f">MemoriaPrincipal::load_hilo</a></div><div class="ttdeci">int load_hilo(int n)</div><div class="ttdoc">Lee el archivo de instrucciones del hilillo especificado. </div><div class="ttdef"><b>Definition:</b> MemoriaPrincipal.cpp:106</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

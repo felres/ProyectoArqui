@@ -1,0 +1,135 @@
+\hypertarget{classMemoriaPrincipal}{}\section{Referencia de la Clase Memoria\+Principal}
+\label{classMemoriaPrincipal}\index{Memoria\+Principal@{Memoria\+Principal}}
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMemoriaPrincipal_a1ffb9d5ffec05ed9bd0fc5c3ca51d200}{Memoria\+Principal} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+int \hyperlink{classMemoriaPrincipal_aaf5f5abab3ddb40a88c9c695c02d29d3}{get\+Data} (int dir)
+\begin{DoxyCompactList}\small\item\em Envia el dato requerido por la instancia del \hyperlink{classCacheDatos}{Cache\+Datos}. \end{DoxyCompactList}\item 
+\hyperlink{structinst__t}{inst\+\_\+t} \hyperlink{classMemoriaPrincipal_a0ffe52092ed587006788f4c3d8965f47}{get\+Inst} (int dir)
+\begin{DoxyCompactList}\small\item\em Retorna la instruccion requerida por la instancia de \hyperlink{classCacheInstrucciones}{Cache\+Instrucciones}. \end{DoxyCompactList}\item 
+int \hyperlink{classMemoriaPrincipal_a0334ed61e40292259985655430efad33}{store\+Dato} (int dir, int dato)
+\begin{DoxyCompactList}\small\item\em Guardar el dato del acche en la memoria principal. \end{DoxyCompactList}\item 
+int \hyperlink{classMemoriaPrincipal_a5262cc20950dd1b8fafd3d0dae36237f}{load\+\_\+hilo} (int n)
+\begin{DoxyCompactList}\small\item\em Lee el archivo de instrucciones del hilillo especificado. \end{DoxyCompactList}\item 
+int \hyperlink{classMemoriaPrincipal_a0f07dc1a0723d5403a176f311a27ed1a}{print\+Data} ()
+\begin{DoxyCompactList}\small\item\em Imprime una tabla de la memoria de datos virtual. \end{DoxyCompactList}\item 
+int \hyperlink{classMemoriaPrincipal_ae7d66a00cbcbd3a51d99d1ec89bb26b5}{print\+Instructions} ()
+\begin{DoxyCompactList}\small\item\em Imprimir una tabla de la memoria virtual de instrucciones. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classMemoriaPrincipal_a1ffb9d5ffec05ed9bd0fc5c3ca51d200}\label{classMemoriaPrincipal_a1ffb9d5ffec05ed9bd0fc5c3ca51d200}} 
+\index{Memoria\+Principal@{Memoria\+Principal}!Memoria\+Principal@{Memoria\+Principal}}
+\index{Memoria\+Principal@{Memoria\+Principal}!Memoria\+Principal@{Memoria\+Principal}}
+\subsubsection{\texorpdfstring{Memoria\+Principal()}{MemoriaPrincipal()}}
+{\footnotesize\ttfamily Memoria\+Principal\+::\+Memoria\+Principal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Llena la memoria de datos con 1s. 
+
+\subsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classMemoriaPrincipal_aaf5f5abab3ddb40a88c9c695c02d29d3}\label{classMemoriaPrincipal_aaf5f5abab3ddb40a88c9c695c02d29d3}} 
+\index{Memoria\+Principal@{Memoria\+Principal}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!Memoria\+Principal@{Memoria\+Principal}}
+\subsubsection{\texorpdfstring{get\+Data()}{getData()}}
+{\footnotesize\ttfamily int Memoria\+Principal\+::get\+Data (\begin{DoxyParamCaption}\item[{int}]{dir }\end{DoxyParamCaption})}
+
+
+
+Envia el dato requerido por la instancia del \hyperlink{classCacheDatos}{Cache\+Datos}. 
+
+El \hyperlink{classCacheDatos}{Cache\+Datos} envia la direccion de memoria que necesita y el metodo lo encuentra en su vector y lo retorna. 
+\begin{DoxyParams}{Parámetros}
+{\em Direccion} & en memoria virtual que necesita el objeto \hyperlink{classCacheDatos}{Cache\+Datos}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Exitoso\+: El int que se refiere a la direccion de memoria en la \hyperlink{classMemoriaPrincipal}{Memoria\+Principal}. Sino, retorna -\/1. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMemoriaPrincipal_a0ffe52092ed587006788f4c3d8965f47}\label{classMemoriaPrincipal_a0ffe52092ed587006788f4c3d8965f47}} 
+\index{Memoria\+Principal@{Memoria\+Principal}!get\+Inst@{get\+Inst}}
+\index{get\+Inst@{get\+Inst}!Memoria\+Principal@{Memoria\+Principal}}
+\subsubsection{\texorpdfstring{get\+Inst()}{getInst()}}
+{\footnotesize\ttfamily \hyperlink{structinst__t}{inst\+\_\+t} Memoria\+Principal\+::get\+Inst (\begin{DoxyParamCaption}\item[{int}]{dir }\end{DoxyParamCaption})}
+
+
+
+Retorna la instruccion requerida por la instancia de \hyperlink{classCacheInstrucciones}{Cache\+Instrucciones}. 
+
+En este caso para calcular el lugar correcto se debe hacer un corrimiento teniendo en cuenta 
+\begin{DoxyParams}{Parámetros}
+{\em La} & direccion que requiere el metodo para buscar en su vector. La direccion de memoria que se envia se encuentra entre 384 y 1020. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Exitoso\+: La estructura de datos con los cuatro ints que se refieren a la instruccion que se pide. Sino, retorna la estruct con el primer dato en -\/1. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMemoriaPrincipal_a5262cc20950dd1b8fafd3d0dae36237f}\label{classMemoriaPrincipal_a5262cc20950dd1b8fafd3d0dae36237f}} 
+\index{Memoria\+Principal@{Memoria\+Principal}!load\+\_\+hilo@{load\+\_\+hilo}}
+\index{load\+\_\+hilo@{load\+\_\+hilo}!Memoria\+Principal@{Memoria\+Principal}}
+\subsubsection{\texorpdfstring{load\+\_\+hilo()}{load\_hilo()}}
+{\footnotesize\ttfamily int Memoria\+Principal\+::load\+\_\+hilo (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Lee el archivo de instrucciones del hilillo especificado. 
+
+Se asume que la ruta del archivo a leer es de tipo {\ttfamily .txt} y se encuentra en un subfolder de nombre nombre\+Del\+Folder\+Contenedor. El metodo abre el archivo y carga sus datos en el vector de instrucciones memoria\+Instrucciones. Para saber donde debe escribir la proxima vez que se llame este metodo, lleva el indice en la variable memoria\+Instrucciones\+Writing\+Index. Este metodo usa funciones de c como strtok(). 
+\begin{DoxyParams}{Parámetros}
+{\em El} & numero que se refiere al archivo de instrucciones del hilillo. Empieza en 0 con {\ttfamily 0.\+txt}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+La direccion de memoria donde empiezan las instrucciones del hilillo. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMemoriaPrincipal_a0f07dc1a0723d5403a176f311a27ed1a}\label{classMemoriaPrincipal_a0f07dc1a0723d5403a176f311a27ed1a}} 
+\index{Memoria\+Principal@{Memoria\+Principal}!print\+Data@{print\+Data}}
+\index{print\+Data@{print\+Data}!Memoria\+Principal@{Memoria\+Principal}}
+\subsubsection{\texorpdfstring{print\+Data()}{printData()}}
+{\footnotesize\ttfamily int Memoria\+Principal\+::print\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Imprime una tabla de la memoria de datos virtual. 
+
+Cuando se necesita imprimir el resultado de este \hyperlink{classCPU}{C\+PU} virtual, se llama a este metodo publico. \mbox{\Hypertarget{classMemoriaPrincipal_ae7d66a00cbcbd3a51d99d1ec89bb26b5}\label{classMemoriaPrincipal_ae7d66a00cbcbd3a51d99d1ec89bb26b5}} 
+\index{Memoria\+Principal@{Memoria\+Principal}!print\+Instructions@{print\+Instructions}}
+\index{print\+Instructions@{print\+Instructions}!Memoria\+Principal@{Memoria\+Principal}}
+\subsubsection{\texorpdfstring{print\+Instructions()}{printInstructions()}}
+{\footnotesize\ttfamily int Memoria\+Principal\+::print\+Instructions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Imprimir una tabla de la memoria virtual de instrucciones. 
+
+Esto se uso principalmente en el caso de debugeo. \mbox{\Hypertarget{classMemoriaPrincipal_a0334ed61e40292259985655430efad33}\label{classMemoriaPrincipal_a0334ed61e40292259985655430efad33}} 
+\index{Memoria\+Principal@{Memoria\+Principal}!store\+Dato@{store\+Dato}}
+\index{store\+Dato@{store\+Dato}!Memoria\+Principal@{Memoria\+Principal}}
+\subsubsection{\texorpdfstring{store\+Dato()}{storeDato()}}
+{\footnotesize\ttfamily int Memoria\+Principal\+::store\+Dato (\begin{DoxyParamCaption}\item[{int}]{dir,  }\item[{int}]{dato }\end{DoxyParamCaption})}
+
+
+
+Guardar el dato del acche en la memoria principal. 
+
+Se hace un calculo de donde es que la palabra (int) enviada se necesita guardar. 
+\begin{DoxyParams}{Parámetros}
+{\em La} & direccion de memoria donde se debe almacenar el dato. \\
+\hline
+{\em El} & dato que se quiere almacenar en memoria. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Exitoso\+: Se retorna el dato almacenado. Sino retorna -\/1. 
+\end{DoxyReturn}
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+/home/falafel/\+Documents/\+Proyecto\+Arqui/\+Memoria\+Principal/Memoria\+Principal.\+h\item 
+/home/falafel/\+Documents/\+Proyecto\+Arqui/\+Memoria\+Principal/Memoria\+Principal.\+cpp\end{DoxyCompactItemize}
