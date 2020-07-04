@@ -1,3 +1,4 @@
+![alt text](pictures/cover.jpeg "Title")
 # Simulador CPU #
 
 Por Adrian Cordoba Soto B82348,
@@ -24,3 +25,7 @@ make documentacion
 ```
 Si no tiene firefox, puede usar el browser de su preferencia abriendo el
 directorio `doc/html`
+
+## Logica global ##
+
+## Screenshots ##

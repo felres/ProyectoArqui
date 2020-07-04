@@ -36,6 +36,11 @@ int main(int argc, char *argv[]){
     int quantum = atoi(argv[1]);
     int cant_hilos = atoi(argv[2]);
 
+	if(quantum < 5)
+	{
+		std::cout << "La cantidad de quantum debe ser mayor a 4." << std::endl;
+	}
+	
     MemoriaPrincipal MP;
     CacheInstrucciones CI(&MP);
     CacheDatos CD(&MP);

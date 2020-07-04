@@ -68,7 +68,8 @@ int MemoriaPrincipal::printData()
 	
 	std::string sep = "\t";
 	std::string str;
-	str = "mem:" + sep + "+0" + sep + "+4" + sep + "+8" + sep + "+12" + sep + '\n';
+	str = "Datos en Memoria Principal:\n";
+	str += "mem:" + sep + "+0" + sep + "+4" + sep + "+8" + sep + "+12" + sep + '\n';
 	str += "-----------------------------------\n";
 	// Recorre todo el arreglo
 	for(int i = 0; i < MEMORIADATOS_LENGTH; i+=4)
