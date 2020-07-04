@@ -72,7 +72,7 @@ class MemoriaPrincipal{
 		* escribir la proxima vez que se llame este metodo, lleva el indice
 		* en la variable @ref memoriaInstruccionesWritingIndex. Este metodo
 		* usa funciones de c como @ref strtok().
-		* @param int El numero que se refiere al archivo de instrucciones del hilillo.
+		* @param n El numero que se refiere al archivo de instrucciones del hilillo.
 		* Empieza en 0 con `0.txt`. 
 		* @return La direccion de memoria donde empiezan las instrucciones
 		* del hilillo. 
