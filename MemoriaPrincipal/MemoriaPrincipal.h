@@ -10,9 +10,18 @@
 
 class MemoriaPrincipal{
     private:
+		/// Arreglo que simula la memoria de datos. Tamano 96.
 		int memoriaDatos[MEMORIADATOS_LENGTH]; //48 * 2
+		
+		/// Arreglo que simula la memoria de instrucciones. Tamano 640.
 		int memoriaInstrucciones[MEMORIAINSTRUCCIONES_LENGTH]; //80 * 8
+		
+		/// Indice especial que sirve para que la instancia recuerde
+		/// donde seguir escribiendo en la memoria de instrucciones.
 		int memoriaInstruccionesWritingIndex = 0;
+		
+		/// Este string se refiere al nombre del folder donde estan los
+		/// archivos de prueba.
 		std::string nombreDelFolderContenedor = "HILILLOS-PRUEBA FINAL-CI0120";
 		
     public:

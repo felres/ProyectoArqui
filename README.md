@@ -2,7 +2,7 @@
 
 Por Adrian Cordoba Soto B82348,
 Diego Murillo Porras B85526,
-Felipe Vega Vindas B7824.
+Felipe Vega Vindas B78244.
 
 En este README se explicara como correr el programa y como ver la documentacion.
 
