@@ -86,7 +86,7 @@ Métodos públicos</h2></td></tr>
 <tr class="separator:a3f45fa41418612c913095caa7f2ba9a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae38afe483dfc35d8159b828d4785333f"><td class="memItemLeft" align="right" valign="top"><a id="ae38afe483dfc35d8159b828d4785333f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCacheDatos.html#ae38afe483dfc35d8159b828d4785333f">imprimir</a> ()</td></tr>
-<tr class="memdesc:ae38afe483dfc35d8159b828d4785333f"><td class="mdescLeft">&#160;</td><td class="mdescRight">imprime la cache y las estadisticas que se requiere <br /></td></tr>
+<tr class="memdesc:ae38afe483dfc35d8159b828d4785333f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imprime la cache y las estadisticas que se requiere. <br /></td></tr>
 <tr class="separator:ae38afe483dfc35d8159b828d4785333f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentación del constructor y destructor</h2>
@@ -109,7 +109,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Constructor. </p>
 <p>Llena la cache con nulos, y asigna el objeto <a class="el" href="classMemoriaPrincipal.html">MemoriaPrincipal</a>. </p><dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">MP,puntero</td><td>al objeto <a class="el" href="classMemoriaPrincipal.html">MemoriaPrincipal</a> </td></tr>
+    <tr><td class="paramname">MP*</td><td>Puntero al objeto <a class="el" href="classMemoriaPrincipal.html">MemoriaPrincipal</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -150,15 +150,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 
 <p>Lee el dato que se encuentra en la direccion solicitada. </p>
-<p>Averigua que bloque y que palabra se desea leer, si esta en cache lo retorna, de no estar lo carga a cache y lo retorna, y hace RL = direccion </p><dl class="params"><dt>Parámetros</dt><dd>
+<p>Averigua que bloque y que palabra se desea leer, si esta en cache lo retorna, de no estar lo carga a cache y lo retorna, y hace RL = direccion. </p><dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">direccion,direccion</td><td>de la palabra que se esea leer. </td></tr>
-    <tr><td class="paramname">RL,direccion</td><td>para coordinar memoria critica </td></tr>
-    <tr><td class="paramname">reloj,reloj,el</td><td>reloj del codigo, que se debe aumentar si se cambia de bloque </td></tr>
+    <tr><td class="paramname">dir</td><td>Direccion de la palabra que se esea leer. </td></tr>
+    <tr><td class="paramname">RL&amp;</td><td>Direccion para coordinar memoria critica. </td></tr>
+    <tr><td class="paramname">reloj&amp;</td><td>Reloj del codigo, que se debe aumentar si se cambia de bloque. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd>el dato que se leyo </dd></dl>
+<dl class="section return"><dt>Devuelve</dt><dd>El dato que se leyo. </dd></dl>
 
 </div>
 </div>
@@ -189,14 +189,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 
 <p>Lee el dato que se encuentra en la direccion solicitada. </p>
-<p>Averigua que bloque y que palabra se desea leer, si esta en cache lo retorna, de no estar lo carga a cache y lo retorna </p><dl class="params"><dt>Parámetros</dt><dd>
+<p>Averigua que bloque y que palabra se desea leer, si esta en cache lo retorna, de no estar lo carga a cache y lo retorna. </p><dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">direccion,direccion</td><td>de la palabra que se esea leer. </td></tr>
-    <tr><td class="paramname">reloj,reloj,el</td><td>reloj del codigo, que se debe aumentar si se cambia de bloque </td></tr>
+    <tr><td class="paramname">dir</td><td>Direccion de la palabra que se esea leer. </td></tr>
+    <tr><td class="paramname">reloj</td><td>El reloj del codigo, que se debe aumentar si se cambia de bloque. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd>el dato que se leyo </dd></dl>
+<dl class="section return"><dt>Devuelve</dt><dd>El dato que se leyo. </dd></dl>
 
 </div>
 </div>
@@ -237,15 +237,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-<p>si RL == direccion, Averigua que bloque y que palabra se desea hacer el cambio, si este esta en cache se escribe y se cambia a modificado si no lo estaba antes, y si no estaba se carga en cache el bloque y se escribe en el bloque recien cargado </p><dl class="params"><dt>Parámetros</dt><dd>
+<p>Si RL == direccion, Averigua que bloque y que palabra se desea hacer el cambio, si este esta en cache se escribe y se cambia a modificado si no lo estaba antes, y si no estaba se carga en cache el bloque y se escribe en el bloque recien cargado. </p><dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">direccion,direccion</td><td>de donde se desea guardar la palabra recibida </td></tr>
-    <tr><td class="paramname">RL,direccion</td><td>para coordinar memoria critica </td></tr>
-    <tr><td class="paramname">reloj,reloj,el</td><td>reloj del codigo, que se debe aumentar si se cambia de bloque </td></tr>
+    <tr><td class="paramname">dir</td><td>Direccion de donde se desea guardar la palabra recibida. </td></tr>
+    <tr><td class="paramname">word</td><td>word. </td></tr>
+    <tr><td class="paramname">RL&amp;</td><td>Direccion para coordinar memoria critica. </td></tr>
+    <tr><td class="paramname">reloj&amp;</td><td>El reloj del codigo, que se debe aumentar si se cambia de bloque. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd>retorna si se tuvo exito a la hora de hacer la escritura, 1 es si, 0 es no </dd></dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Retorna si se tuvo exito a la hora de hacer la escritura, 1 es si, 0 es no. </dd></dl>
 
 </div>
 </div>
@@ -282,11 +283,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 
 <p>Guarda un dato en la palabra que se indica en la direccion. </p>
-<p>Averigua que bloque y que palabra se desea hacer el cambio, si este esta en cache se escribe y se cambia a modificado si no lo estaba antes, y si no estaba se carga en cache el bloque y se escribe en el bloque recien cargado </p><dl class="params"><dt>Parámetros</dt><dd>
+<p>Averigua que bloque y que palabra se desea hacer el cambio, si este esta en cache se escribe y se cambia a modificado si no lo estaba antes, y si no estaba se carga en cache el bloque y se escribe en el bloque recien cargado. </p><dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">direccion,direccion</td><td>de donde se desea guardar la palabra recibida </td></tr>
-    <tr><td class="paramname">word,palabra</td><td>que se desea escribir en memoria </td></tr>
-    <tr><td class="paramname">reloj,reloj,el</td><td>reloj del codigo, que se debe aumentar si se cambia de bloque </td></tr>
+    <tr><td class="paramname">dir</td><td>Direccion de donde se desea guardar la palabra recibida. </td></tr>
+    <tr><td class="paramname">word</td><td>Palabra que se desea escribir en memoria. </td></tr>
+    <tr><td class="paramname">reloj</td><td>El reloj del codigo, que se debe aumentar si se cambia de bloque. </td></tr>
   </table>
   </dd>
 </dl>

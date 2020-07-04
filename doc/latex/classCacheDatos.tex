@@ -15,7 +15,7 @@ bool \hyperlink{classCacheDatos_a3f45fa41418612c913095caa7f2ba9a4}{sc} (int, int
 \item 
 \mbox{\Hypertarget{classCacheDatos_ae38afe483dfc35d8159b828d4785333f}\label{classCacheDatos_ae38afe483dfc35d8159b828d4785333f}} 
 void \hyperlink{classCacheDatos_ae38afe483dfc35d8159b828d4785333f}{imprimir} ()
-\begin{DoxyCompactList}\small\item\em imprime la cache y las estadisticas que se requiere \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Imprime la cache y las estadisticas que se requiere. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Documentación del constructor y destructor}
@@ -31,7 +31,7 @@ Constructor.
 
 Llena la cache con nulos, y asigna el objeto \hyperlink{classMemoriaPrincipal}{Memoria\+Principal}. 
 \begin{DoxyParams}{Parámetros}
-{\em MP,puntero} & al objeto \hyperlink{classMemoriaPrincipal}{Memoria\+Principal} \\
+{\em M\+P$\ast$} & Puntero al objeto \hyperlink{classMemoriaPrincipal}{Memoria\+Principal} \\
 \hline
 \end{DoxyParams}
 
@@ -47,17 +47,17 @@ Llena la cache con nulos, y asigna el objeto \hyperlink{classMemoriaPrincipal}{M
 
 Lee el dato que se encuentra en la direccion solicitada. 
 
-Averigua que bloque y que palabra se desea leer, si esta en cache lo retorna, de no estar lo carga a cache y lo retorna, y hace RL = direccion 
+Averigua que bloque y que palabra se desea leer, si esta en cache lo retorna, de no estar lo carga a cache y lo retorna, y hace RL = direccion. 
 \begin{DoxyParams}{Parámetros}
-{\em direccion,direccion} & de la palabra que se esea leer. \\
+{\em dir} & Direccion de la palabra que se esea leer. \\
 \hline
-{\em RL,direccion} & para coordinar memoria critica \\
+{\em R\+L\&} & Direccion para coordinar memoria critica. \\
 \hline
-{\em reloj,reloj,el} & reloj del codigo, que se debe aumentar si se cambia de bloque \\
+{\em reloj\&} & Reloj del codigo, que se debe aumentar si se cambia de bloque. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
-el dato que se leyo 
+El dato que se leyo. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCacheDatos_abe68f33f8549a4d0467c6c0b2eb6c463}\label{classCacheDatos_abe68f33f8549a4d0467c6c0b2eb6c463}} 
 \index{Cache\+Datos@{Cache\+Datos}!lw@{lw}}
@@ -69,15 +69,15 @@ el dato que se leyo
 
 Lee el dato que se encuentra en la direccion solicitada. 
 
-Averigua que bloque y que palabra se desea leer, si esta en cache lo retorna, de no estar lo carga a cache y lo retorna 
+Averigua que bloque y que palabra se desea leer, si esta en cache lo retorna, de no estar lo carga a cache y lo retorna. 
 \begin{DoxyParams}{Parámetros}
-{\em direccion,direccion} & de la palabra que se esea leer. \\
+{\em dir} & Direccion de la palabra que se esea leer. \\
 \hline
-{\em reloj,reloj,el} & reloj del codigo, que se debe aumentar si se cambia de bloque \\
+{\em reloj} & El reloj del codigo, que se debe aumentar si se cambia de bloque. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
-el dato que se leyo 
+El dato que se leyo. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCacheDatos_a3f45fa41418612c913095caa7f2ba9a4}\label{classCacheDatos_a3f45fa41418612c913095caa7f2ba9a4}} 
 \index{Cache\+Datos@{Cache\+Datos}!sc@{sc}}
@@ -85,17 +85,19 @@ el dato que se leyo
 \subsubsection{\texorpdfstring{sc()}{sc()}}
 {\footnotesize\ttfamily bool Cache\+Datos\+::sc (\begin{DoxyParamCaption}\item[{int}]{direccion,  }\item[{int}]{word,  }\item[{int \&}]{RL,  }\item[{int \&}]{reloj }\end{DoxyParamCaption})}
 
-si RL == direccion, Averigua que bloque y que palabra se desea hacer el cambio, si este esta en cache se escribe y se cambia a modificado si no lo estaba antes, y si no estaba se carga en cache el bloque y se escribe en el bloque recien cargado 
+Si RL == direccion, Averigua que bloque y que palabra se desea hacer el cambio, si este esta en cache se escribe y se cambia a modificado si no lo estaba antes, y si no estaba se carga en cache el bloque y se escribe en el bloque recien cargado. 
 \begin{DoxyParams}{Parámetros}
-{\em direccion,direccion} & de donde se desea guardar la palabra recibida \\
+{\em dir} & Direccion de donde se desea guardar la palabra recibida. \\
 \hline
-{\em RL,direccion} & para coordinar memoria critica \\
+{\em word} & word. \\
 \hline
-{\em reloj,reloj,el} & reloj del codigo, que se debe aumentar si se cambia de bloque \\
+{\em R\+L\&} & Direccion para coordinar memoria critica. \\
+\hline
+{\em reloj\&} & El reloj del codigo, que se debe aumentar si se cambia de bloque. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
-retorna si se tuvo exito a la hora de hacer la escritura, 1 es si, 0 es no 
+Retorna si se tuvo exito a la hora de hacer la escritura, 1 es si, 0 es no. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCacheDatos_adcc01761d92c14b36a164f4367898277}\label{classCacheDatos_adcc01761d92c14b36a164f4367898277}} 
 \index{Cache\+Datos@{Cache\+Datos}!sw@{sw}}
@@ -107,13 +109,13 @@ retorna si se tuvo exito a la hora de hacer la escritura, 1 es si, 0 es no
 
 Guarda un dato en la palabra que se indica en la direccion. 
 
-Averigua que bloque y que palabra se desea hacer el cambio, si este esta en cache se escribe y se cambia a modificado si no lo estaba antes, y si no estaba se carga en cache el bloque y se escribe en el bloque recien cargado 
+Averigua que bloque y que palabra se desea hacer el cambio, si este esta en cache se escribe y se cambia a modificado si no lo estaba antes, y si no estaba se carga en cache el bloque y se escribe en el bloque recien cargado. 
 \begin{DoxyParams}{Parámetros}
-{\em direccion,direccion} & de donde se desea guardar la palabra recibida \\
+{\em dir} & Direccion de donde se desea guardar la palabra recibida. \\
 \hline
-{\em word,palabra} & que se desea escribir en memoria \\
+{\em word} & Palabra que se desea escribir en memoria. \\
 \hline
-{\em reloj,reloj,el} & reloj del codigo, que se debe aumentar si se cambia de bloque \\
+{\em reloj} & El reloj del codigo, que se debe aumentar si se cambia de bloque. \\
 \hline
 \end{DoxyParams}
 

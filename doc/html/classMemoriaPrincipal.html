@@ -132,7 +132,7 @@ Métodos públicos</h2></td></tr>
 <p>Envia el dato requerido por la instancia del <a class="el" href="classCacheDatos.html">CacheDatos</a>. </p>
 <p>El <a class="el" href="classCacheDatos.html">CacheDatos</a> envia la direccion de memoria que necesita y el metodo lo encuentra en su vector y lo retorna. </p><dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Direccion</td><td>en memoria virtual que necesita el objeto <a class="el" href="classCacheDatos.html">CacheDatos</a>. </td></tr>
+    <tr><td class="paramname">dir</td><td>Direccion en memoria virtual que necesita el objeto <a class="el" href="classCacheDatos.html">CacheDatos</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -159,7 +159,7 @@ Métodos públicos</h2></td></tr>
 <p>Retorna la instruccion requerida por la instancia de <a class="el" href="classCacheInstrucciones.html">CacheInstrucciones</a>. </p>
 <p>En este caso para calcular el lugar correcto se debe hacer un corrimiento teniendo en cuenta </p><dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">La</td><td>direccion que requiere el metodo para buscar en su vector. La direccion de memoria que se envia se encuentra entre 384 y 1020. </td></tr>
+    <tr><td class="paramname">dir</td><td>La direccion que requiere el metodo para buscar en su vector. La direccion de memoria que se envia se encuentra entre 384 y 1020. </td></tr>
   </table>
   </dd>
 </dl>
@@ -186,7 +186,7 @@ Métodos públicos</h2></td></tr>
 <p>Lee el archivo de instrucciones del hilillo especificado. </p>
 <p>Se asume que la ruta del archivo a leer es de tipo <code>.txt</code> y se encuentra en un subfolder de nombre nombreDelFolderContenedor. El metodo abre el archivo y carga sus datos en el vector de instrucciones memoriaInstrucciones. Para saber donde debe escribir la proxima vez que se llame este metodo, lleva el indice en la variable memoriaInstruccionesWritingIndex. Este metodo usa funciones de c como strtok(). </p><dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">El</td><td>numero que se refiere al archivo de instrucciones del hilillo. Empieza en 0 con <code>0.txt</code>. </td></tr>
+    <tr><td class="paramname">int</td><td>El numero que se refiere al archivo de instrucciones del hilillo. Empieza en 0 con <code>0.txt</code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -263,8 +263,8 @@ Métodos públicos</h2></td></tr>
 <p>Guardar el dato del acche en la memoria principal. </p>
 <p>Se hace un calculo de donde es que la palabra (int) enviada se necesita guardar. </p><dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">La</td><td>direccion de memoria donde se debe almacenar el dato. </td></tr>
-    <tr><td class="paramname">El</td><td>dato que se quiere almacenar en memoria. </td></tr>
+    <tr><td class="paramname">dir</td><td>La direccion de memoria donde se debe almacenar el dato. </td></tr>
+    <tr><td class="paramname">dato</td><td>El dato que se quiere almacenar en memoria. </td></tr>
   </table>
   </dd>
 </dl>

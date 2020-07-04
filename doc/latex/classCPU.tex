@@ -3,21 +3,91 @@
 \subsection*{Métodos públicos}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classCPU_adb7f83411e262b4e7f635c3f7a9a28b6}\label{classCPU_adb7f83411e262b4e7f635c3f7a9a28b6}} 
-{\bfseries C\+PU} (int)
-\item 
+\hyperlink{classCPU_a1901d19879a542ce4021fea5355ef056}{C\+PU} (int quantum)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classCPU}{C\+PU} object. \end{DoxyCompactList}\item 
+void \hyperlink{classCPU_a06f4d0b7369cb2520e7795a77d18887d}{cpu\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em inicializa la ejecucion de los hilos y sus instrucciones. \end{DoxyCompactList}\item 
+void \hyperlink{classCPU_acbee1b754fbf381f3fa08cf3f3c1a489}{load\+\_\+memory} (int cant\+\_\+hilos)
+\begin{DoxyCompactList}\small\item\em carga de memoria las isntrucciones de los hilos. \end{DoxyCompactList}\item 
+void \hyperlink{classCPU_a5f109b7be44b7f800938c3de9ebbc2a4}{print\+Hilos} ()
+\begin{DoxyCompactList}\small\item\em imprime datos de los hilos que corrieron. \end{DoxyCompactList}\item 
+void \hyperlink{classCPU_ac1b30c01a5d6d8cc5410b397747375f7}{set\+\_\+ptr} (\hyperlink{classCacheInstrucciones}{Cache\+Instrucciones} $\ast$CI, \hyperlink{classMemoriaPrincipal}{Memoria\+Principal} $\ast$MP, \hyperlink{classCacheDatos}{Cache\+Datos} $\ast$CD)
+\begin{DoxyCompactList}\small\item\em instancia los punteros de los objetos de memoria. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classCPU_a1901d19879a542ce4021fea5355ef056}\label{classCPU_a1901d19879a542ce4021fea5355ef056}} 
+\index{C\+PU@{C\+PU}!C\+PU@{C\+PU}}
+\index{C\+PU@{C\+PU}!C\+PU@{C\+PU}}
+\subsubsection{\texorpdfstring{C\+P\+U()}{CPU()}}
+{\footnotesize\ttfamily C\+P\+U\+::\+C\+PU (\begin{DoxyParamCaption}\item[{int}]{quantum }\end{DoxyParamCaption})}
+
+
+
+Construct a new \hyperlink{classCPU}{C\+PU} object. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em quantum} & valor del cuantum con el que se realizan los cambios de constexto. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Documentación de las funciones miembro}
 \mbox{\Hypertarget{classCPU_a06f4d0b7369cb2520e7795a77d18887d}\label{classCPU_a06f4d0b7369cb2520e7795a77d18887d}} 
-void {\bfseries cpu\+\_\+init} ()
-\item 
-\mbox{\Hypertarget{classCPU_aa0c0e71485431029b7c5a484ff64fc79}\label{classCPU_aa0c0e71485431029b7c5a484ff64fc79}} 
-void {\bfseries load\+\_\+memory} (int)
-\item 
+\index{C\+PU@{C\+PU}!cpu\+\_\+init@{cpu\+\_\+init}}
+\index{cpu\+\_\+init@{cpu\+\_\+init}!C\+PU@{C\+PU}}
+\subsubsection{\texorpdfstring{cpu\+\_\+init()}{cpu\_init()}}
+{\footnotesize\ttfamily void C\+P\+U\+::cpu\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+inicializa la ejecucion de los hilos y sus instrucciones. 
+
+a partir de los \hyperlink{structTCB}{T\+CB} en roudn\+Robin\+\_\+queue, carga el contexto de cada hilo, y ejecuta las instrucciones a partir de su PC. L\+Leva un conteo de la cantidad de cilos ejecutados en un contesto burst, y cuando burst llega al valor del quantum, se realiza el cambio de contexto al guardar el \hyperlink{structTCB}{T\+CB} del hilo acutal y cargar el del siguiente a ejecutar. Cuando un hilo termina, su \hyperlink{structTCB}{T\+CB} es guardado en hilos\+\_\+terminados. El cpu deja de ejecutar instrucciones cuando la cola round\+Robing\+\_\+queue ese vacia. \mbox{\Hypertarget{classCPU_acbee1b754fbf381f3fa08cf3f3c1a489}\label{classCPU_acbee1b754fbf381f3fa08cf3f3c1a489}} 
+\index{C\+PU@{C\+PU}!load\+\_\+memory@{load\+\_\+memory}}
+\index{load\+\_\+memory@{load\+\_\+memory}!C\+PU@{C\+PU}}
+\subsubsection{\texorpdfstring{load\+\_\+memory()}{load\_memory()}}
+{\footnotesize\ttfamily void C\+P\+U\+::load\+\_\+memory (\begin{DoxyParamCaption}\item[{int}]{cant\+\_\+hilos }\end{DoxyParamCaption})}
+
+
+
+carga de memoria las isntrucciones de los hilos. 
+
+por cada hilo, pide a \hyperlink{classMemoriaPrincipal}{Memoria\+Principal} que carge las intrucciones de ese hilo y guarda en un \hyperlink{structTCB}{T\+CB} el PC donde comienza su priemra isntrucciones, luego encola este \hyperlink{structTCB}{T\+CB} en round\+Robing\+\_\+queue. 
+\begin{DoxyParams}{Parámetros}
+{\em cant\+\_\+hilos} & cantidad de hilos con los que el programa correra. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classCPU_a5f109b7be44b7f800938c3de9ebbc2a4}\label{classCPU_a5f109b7be44b7f800938c3de9ebbc2a4}} 
-void {\bfseries print\+Hilos} ()
-\item 
-\mbox{\Hypertarget{classCPU_a35a1e7218a033321c7261b211da029e5}\label{classCPU_a35a1e7218a033321c7261b211da029e5}} 
-void {\bfseries set\+\_\+ptr} (\hyperlink{classCacheInstrucciones}{Cache\+Instrucciones} $\ast$, \hyperlink{classMemoriaPrincipal}{Memoria\+Principal} $\ast$, \hyperlink{classCacheDatos}{Cache\+Datos} $\ast$)
-\end{DoxyCompactItemize}
+\index{C\+PU@{C\+PU}!print\+Hilos@{print\+Hilos}}
+\index{print\+Hilos@{print\+Hilos}!C\+PU@{C\+PU}}
+\subsubsection{\texorpdfstring{print\+Hilos()}{printHilos()}}
+{\footnotesize\ttfamily void C\+P\+U\+::print\+Hilos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+imprime datos de los hilos que corrieron. 
+
+imprimri los registros y cantidad de ciclos que duro correindo de cada hilo. \mbox{\Hypertarget{classCPU_ac1b30c01a5d6d8cc5410b397747375f7}\label{classCPU_ac1b30c01a5d6d8cc5410b397747375f7}} 
+\index{C\+PU@{C\+PU}!set\+\_\+ptr@{set\+\_\+ptr}}
+\index{set\+\_\+ptr@{set\+\_\+ptr}!C\+PU@{C\+PU}}
+\subsubsection{\texorpdfstring{set\+\_\+ptr()}{set\_ptr()}}
+{\footnotesize\ttfamily void C\+P\+U\+::set\+\_\+ptr (\begin{DoxyParamCaption}\item[{\hyperlink{classCacheInstrucciones}{Cache\+Instrucciones} $\ast$}]{CI,  }\item[{\hyperlink{classMemoriaPrincipal}{Memoria\+Principal} $\ast$}]{MP,  }\item[{\hyperlink{classCacheDatos}{Cache\+Datos} $\ast$}]{CD }\end{DoxyParamCaption})}
+
+
+
+instancia los punteros de los objetos de memoria. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em CI} & cache instrucciones a utilizar. \\
+\hline
+{\em MP} & memoria principal a utilizar. \\
+\hline
+{\em CD} & cache de datos a utilizar. \\
+\hline
+\end{DoxyParams}
 
 
 La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}

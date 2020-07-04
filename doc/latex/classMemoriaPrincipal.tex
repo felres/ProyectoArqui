@@ -45,7 +45,7 @@ Envia el dato requerido por la instancia del \hyperlink{classCacheDatos}{Cache\+
 
 El \hyperlink{classCacheDatos}{Cache\+Datos} envia la direccion de memoria que necesita y el metodo lo encuentra en su vector y lo retorna. 
 \begin{DoxyParams}{Parámetros}
-{\em Direccion} & en memoria virtual que necesita el objeto \hyperlink{classCacheDatos}{Cache\+Datos}. \\
+{\em dir} & Direccion en memoria virtual que necesita el objeto \hyperlink{classCacheDatos}{Cache\+Datos}. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
@@ -63,7 +63,7 @@ Retorna la instruccion requerida por la instancia de \hyperlink{classCacheInstru
 
 En este caso para calcular el lugar correcto se debe hacer un corrimiento teniendo en cuenta 
 \begin{DoxyParams}{Parámetros}
-{\em La} & direccion que requiere el metodo para buscar en su vector. La direccion de memoria que se envia se encuentra entre 384 y 1020. \\
+{\em dir} & La direccion que requiere el metodo para buscar en su vector. La direccion de memoria que se envia se encuentra entre 384 y 1020. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
@@ -81,7 +81,7 @@ Lee el archivo de instrucciones del hilillo especificado.
 
 Se asume que la ruta del archivo a leer es de tipo {\ttfamily .txt} y se encuentra en un subfolder de nombre nombre\+Del\+Folder\+Contenedor. El metodo abre el archivo y carga sus datos en el vector de instrucciones memoria\+Instrucciones. Para saber donde debe escribir la proxima vez que se llame este metodo, lleva el indice en la variable memoria\+Instrucciones\+Writing\+Index. Este metodo usa funciones de c como strtok(). 
 \begin{DoxyParams}{Parámetros}
-{\em El} & numero que se refiere al archivo de instrucciones del hilillo. Empieza en 0 con {\ttfamily 0.\+txt}. \\
+{\em int} & El numero que se refiere al archivo de instrucciones del hilillo. Empieza en 0 con {\ttfamily 0.\+txt}. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
@@ -119,9 +119,9 @@ Guardar el dato del acche en la memoria principal.
 
 Se hace un calculo de donde es que la palabra (int) enviada se necesita guardar. 
 \begin{DoxyParams}{Parámetros}
-{\em La} & direccion de memoria donde se debe almacenar el dato. \\
+{\em dir} & La direccion de memoria donde se debe almacenar el dato. \\
 \hline
-{\em El} & dato que se quiere almacenar en memoria. \\
+{\em dato} & El dato que se quiere almacenar en memoria. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}

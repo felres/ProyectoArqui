@@ -70,13 +70,68 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a33342087a9014e89bce69858483f7a73"><td class="memItemLeft" align="right" valign="top"><a id="a33342087a9014e89bce69858483f7a73"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CacheInstrucciones</b> (<a class="el" href="classMemoriaPrincipal.html">MemoriaPrincipal</a> *mp)</td></tr>
+<tr class="memitem:a33342087a9014e89bce69858483f7a73"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCacheInstrucciones.html#a33342087a9014e89bce69858483f7a73">CacheInstrucciones</a> (<a class="el" href="classMemoriaPrincipal.html">MemoriaPrincipal</a> *mp)</td></tr>
+<tr class="memdesc:a33342087a9014e89bce69858483f7a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Cache Instrucciones object.  <a href="#a33342087a9014e89bce69858483f7a73">Más...</a><br /></td></tr>
 <tr class="separator:a33342087a9014e89bce69858483f7a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37c7f6498709cbd259d6e302333b711d"><td class="memItemLeft" align="right" valign="top"><a id="a37c7f6498709cbd259d6e302333b711d"></a>
-<a class="el" href="structinst__t.html">inst_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>lw</b> (reg_t *)</td></tr>
-<tr class="separator:a37c7f6498709cbd259d6e302333b711d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb2ffa3f97abb0a72dc686e81f1498fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structinst__t.html">inst_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCacheInstrucciones.html#abb2ffa3f97abb0a72dc686e81f1498fd">lw</a> (reg_t *MAR)</td></tr>
+<tr class="memdesc:abb2ffa3f97abb0a72dc686e81f1498fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve la instruccion pedide a partir de una direccion fisica.  <a href="#abb2ffa3f97abb0a72dc686e81f1498fd">Más...</a><br /></td></tr>
+<tr class="separator:abb2ffa3f97abb0a72dc686e81f1498fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a id="a33342087a9014e89bce69858483f7a73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33342087a9014e89bce69858483f7a73">&#9670;&nbsp;</a></span>CacheInstrucciones()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CacheInstrucciones::CacheInstrucciones </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMemoriaPrincipal.html">MemoriaPrincipal</a> *&#160;</td>
+          <td class="paramname"><em>mp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Cache Instrucciones object. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mp</td><td>puntero a objeto <a class="el" href="classMemoriaPrincipal.html">MemoriaPrincipal</a> el cual utiliza el cpu para correr. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="abb2ffa3f97abb0a72dc686e81f1498fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb2ffa3f97abb0a72dc686e81f1498fd">&#9670;&nbsp;</a></span>lw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structinst__t.html">inst_t</a> CacheInstrucciones::lw </td>
+          <td>(</td>
+          <td class="paramtype">reg_t *&#160;</td>
+          <td class="paramname"><em>MAR</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve la instruccion pedide a partir de una direccion fisica. </p>
+<p>A partir de la direccion dada, si existe dado bloque en cache, devule un ins_t con los datos de la instruccion pedida, si no existe, carga primero la isntruccion de memoria principal y luego la revuelve. </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">MAR</td><td>Direccion fisica de la instruccion. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="structinst__t.html" title="struct para manejar instrucciones. ">inst_t</a> Struct con los datos de la instruccion pedida. </dd></dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>/home/falafel/Documents/ProyectoArqui/CacheInstrucciones/<a class="el" href="CacheInstrucciones_8h_source.html">CacheInstrucciones.h</a></li>
 <li>/home/falafel/Documents/ProyectoArqui/CacheInstrucciones/CacheInstrucciones.cpp</li>

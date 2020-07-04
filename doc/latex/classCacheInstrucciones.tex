@@ -3,12 +3,49 @@
 \subsection*{Métodos públicos}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{classCacheInstrucciones_a33342087a9014e89bce69858483f7a73}{Cache\+Instrucciones} (\hyperlink{classMemoriaPrincipal}{Memoria\+Principal} $\ast$mp)
+\begin{DoxyCompactList}\small\item\em Construct a new Cache Instrucciones object. \end{DoxyCompactList}\item 
+\hyperlink{structinst__t}{inst\+\_\+t} \hyperlink{classCacheInstrucciones_abb2ffa3f97abb0a72dc686e81f1498fd}{lw} (reg\+\_\+t $\ast$M\+AR)
+\begin{DoxyCompactList}\small\item\em Devuelve la instruccion pedide a partir de una direccion fisica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación del constructor y destructor}
 \mbox{\Hypertarget{classCacheInstrucciones_a33342087a9014e89bce69858483f7a73}\label{classCacheInstrucciones_a33342087a9014e89bce69858483f7a73}} 
-{\bfseries Cache\+Instrucciones} (\hyperlink{classMemoriaPrincipal}{Memoria\+Principal} $\ast$mp)
-\item 
-\mbox{\Hypertarget{classCacheInstrucciones_a37c7f6498709cbd259d6e302333b711d}\label{classCacheInstrucciones_a37c7f6498709cbd259d6e302333b711d}} 
-\hyperlink{structinst__t}{inst\+\_\+t} {\bfseries lw} (reg\+\_\+t $\ast$)
-\end{DoxyCompactItemize}
+\index{Cache\+Instrucciones@{Cache\+Instrucciones}!Cache\+Instrucciones@{Cache\+Instrucciones}}
+\index{Cache\+Instrucciones@{Cache\+Instrucciones}!Cache\+Instrucciones@{Cache\+Instrucciones}}
+\subsubsection{\texorpdfstring{Cache\+Instrucciones()}{CacheInstrucciones()}}
+{\footnotesize\ttfamily Cache\+Instrucciones\+::\+Cache\+Instrucciones (\begin{DoxyParamCaption}\item[{\hyperlink{classMemoriaPrincipal}{Memoria\+Principal} $\ast$}]{mp }\end{DoxyParamCaption})}
+
+
+
+Construct a new Cache Instrucciones object. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em mp} & puntero a objeto \hyperlink{classMemoriaPrincipal}{Memoria\+Principal} el cual utiliza el cpu para correr. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classCacheInstrucciones_abb2ffa3f97abb0a72dc686e81f1498fd}\label{classCacheInstrucciones_abb2ffa3f97abb0a72dc686e81f1498fd}} 
+\index{Cache\+Instrucciones@{Cache\+Instrucciones}!lw@{lw}}
+\index{lw@{lw}!Cache\+Instrucciones@{Cache\+Instrucciones}}
+\subsubsection{\texorpdfstring{lw()}{lw()}}
+{\footnotesize\ttfamily \hyperlink{structinst__t}{inst\+\_\+t} Cache\+Instrucciones\+::lw (\begin{DoxyParamCaption}\item[{reg\+\_\+t $\ast$}]{M\+AR }\end{DoxyParamCaption})}
+
+
+
+Devuelve la instruccion pedide a partir de una direccion fisica. 
+
+A partir de la direccion dada, si existe dado bloque en cache, devule un ins\+\_\+t con los datos de la instruccion pedida, si no existe, carga primero la isntruccion de memoria principal y luego la revuelve. 
+\begin{DoxyParams}{Parámetros}
+{\em M\+AR} & Direccion fisica de la instruccion. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+\hyperlink{structinst__t}{inst\+\_\+t} Struct con los datos de la instruccion pedida. 
+\end{DoxyReturn}
 
 
 La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}

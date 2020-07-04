@@ -10,19 +10,17 @@
 
 class MemoriaPrincipal{
     private:
-		/// Arreglo que simula la memoria de datos. Tamano 96.
-		int memoriaDatos[MEMORIADATOS_LENGTH]; //48 * 2
+		int memoriaDatos[MEMORIADATOS_LENGTH];
+		//!< Arreglo que simula la memoria de datos. Tamano 96.
 		
-		/// Arreglo que simula la memoria de instrucciones. Tamano 640.
-		int memoriaInstrucciones[MEMORIAINSTRUCCIONES_LENGTH]; //80 * 8
+		int memoriaInstrucciones[MEMORIAINSTRUCCIONES_LENGTH];
+		//!< Arreglo que simula la memoria de instrucciones. Tamano 640.
 		
-		/// Indice especial que sirve para que la instancia recuerde
-		/// donde seguir escribiendo en la memoria de instrucciones.
 		int memoriaInstruccionesWritingIndex = 0;
+		//!< Indice especial que sirve para que la instancia recuerde donde seguir escribiendo en la memoria de instrucciones.
 		
-		/// Este string se refiere al nombre del folder donde estan los
-		/// archivos de prueba.
 		std::string nombreDelFolderContenedor = "HILILLOS-PRUEBA FINAL-CI0120";
+		//!< Este string se refiere al nombre del folder donde estan los archivos de prueba.
 		
     public:
 		/**
@@ -36,7 +34,7 @@ class MemoriaPrincipal{
 		* @brief Envia el dato requerido por la instancia del @ref CacheDatos.
 		* @details El @ref CacheDatos envia la direccion de memoria que necesita
 		* y el metodo lo encuentra en su vector y lo retorna.
-		* @param Direccion en memoria virtual que necesita el objeto @ref CacheDatos.
+		* @param dir Direccion en memoria virtual que necesita el objeto @ref CacheDatos.
 		* @return Exitoso: El int que se refiere a la direccion de memoria
 		* en la @ref MemoriaPrincipal. Sino, retorna -1.
 		*/
@@ -47,7 +45,7 @@ class MemoriaPrincipal{
 		* CacheInstrucciones.
 		* @details En este caso para calcular el lugar correcto se debe hacer
 		* un corrimiento teniendo en cuenta 
-		* @param La direccion que requiere el metodo para buscar en su vector.
+		* @param dir La direccion que requiere el metodo para buscar en su vector.
 		* La direccion de memoria que se envia se encuentra entre 384 y 1020.
 		* @return Exitoso: La estructura de datos con los cuatro ints que se
 		* refieren a la instruccion que se pide. Sino, retorna la estruct
@@ -59,8 +57,8 @@ class MemoriaPrincipal{
 		* @brief Guardar el dato del acche en la memoria principal. 
 		* @details Se hace un calculo de donde es que la palabra (int)
 		* enviada se necesita guardar.
-		* @param La direccion de memoria donde se debe almacenar el dato. 
-		* @param El dato que se quiere almacenar en memoria.
+		* @param dir La direccion de memoria donde se debe almacenar el dato. 
+		* @param dato El dato que se quiere almacenar en memoria.
 		* @return Exitoso: Se retorna el dato almacenado. Sino retorna -1.
 		*/
 		int storeDato(int dir, int dato);
@@ -74,7 +72,7 @@ class MemoriaPrincipal{
 		* escribir la proxima vez que se llame este metodo, lleva el indice
 		* en la variable @ref memoriaInstruccionesWritingIndex. Este metodo
 		* usa funciones de c como @ref strtok().
-		* @param El numero que se refiere al archivo de instrucciones del hilillo.
+		* @param int El numero que se refiere al archivo de instrucciones del hilillo.
 		* Empieza en 0 con `0.txt`. 
 		* @return La direccion de memoria donde empiezan las instrucciones
 		* del hilillo. 
