@@ -6,7 +6,7 @@ CPU::CPU(int quantum){
 }
 
 void CPU::cpu_init(){
-    while(!roundRobbing_queue.empty()){
+    while(!roundRobin_queue.empty()){
         thread_fin = 0;
         load_context();
         while(burst != quantum && !thread_fin){
@@ -31,8 +31,8 @@ void CPU::cpu_init(){
 
 void CPU::load_context(){
     /* Load PCB from queue */
-    TCB tcb = roundRobbing_queue.front();
-    roundRobbing_queue.pop();
+    TCB tcb = roundRobin_queue.front();
+    roundRobin_queue.pop();
     /* Load registers */
     for(int r = 0; r < 32; ++r)
         reg[r] = tcb.reg[r];
@@ -59,7 +59,7 @@ void CPU::store_context(){
     /* Store cant_ciclos */
     tcb.cant_ciclos = cant_ciclos + (reloj - start_clock);
     /* Store PCB in queue */
-    roundRobbing_queue.push(tcb);
+    roundRobin_queue.push(tcb);
 }
 
 void CPU::store_terminated_context()
@@ -192,7 +192,7 @@ void CPU::load_memory(int cant_hilos)
         for(reg_i r = 0; r < 32; ++r)
             tcb.reg[r] = 0;
         tcb.cant_ciclos = 0;
-        roundRobbing_queue.push(tcb);
+        roundRobin_queue.push(tcb);
     }
 }   
 

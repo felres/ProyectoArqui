@@ -17,11 +17,42 @@ class CacheInstrucciones{
         };
         bloque memoria[4];
         MemoriaPrincipal *mp;
-        tag_t get_tag(reg_t *);
+        /**
+         * @brief devulve el tag del bloque correspondiente a la dirección física dada.
+         * @param MAR contiene dirección de memoria para obtener el tag. 
+         * @return tag_t 
+         */
+        tag_t get_tag(reg_t *MAR);
+        /**
+         * @brief busca tag de bloque en @ref memoria.
+         * @details a partir de un tag dado, verifica si ese tag existe en @ref memoria, si existe
+         * retorna el índice del bloque de cache donde se encuentra el tag, si no, retorna -1.
+         * @param tag tag a buscar. 
+         * @return int indice del bloque con el tag correspondiente. 
+         */
         int find_tag(tag_t tag);
-        int load_from_memory(tag_t );
+        /**
+         * @brief carga bloque de memoria a la cache a partir de un tag de bloque dado. 
+         * @details dado el tag del bloque, calcula la direccion fisica y carga la memoria principal 
+         * a @ref memoria las dos palabras correspondientes en el bloque de cache mediante mapeo directo. 
+         * @param tag tag del bloque a cargar. 
+         * @return int indice del bloque de cache donde se cargó el bloque correspondiente al @param tag. 
+         */
+        int load_from_memory(tag_t tag);
     public: 
+        /**
+         * @brief Construct a new Cache Instrucciones object
+         * @param mp puntero a objeto @ref MemoriaPrincipal el cual utiliza el cpu para correr. 
+         */
         CacheInstrucciones(MemoriaPrincipal *mp);
-        inst_t lw(reg_t *);
+        /**
+         * @brief devuelve la instruccion pedide a partir de una direccion fisica.
+         * @details a partir de la direccion dada, si existe dado bloque en cache, devule un @ref ins_t 
+         * con los datos de la instruccion pedida, si no existe, carga primero la isntruccion de memoria principal
+         * y luego la revuelve. 
+         * @param MAR direccion fisica de la instruccion.
+         * @return inst_t struct con los datos de la instruccion pedida.
+         */
+        inst_t lw(reg_t *MAR);
 };
 #endif
